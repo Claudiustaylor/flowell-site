@@ -7,9 +7,9 @@ import Link from 'next/link'
 function FlowellLogo({ className = 'w-32' }: { className?: string }) {
   return (
     <svg viewBox="0 0 600 200" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="600" height="200" fill="black"/>
       <g fontFamily="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" fontStyle="italic" fontWeight="900" fontSize="96" fill="white">
-        <text x="40" y="135" letterSpacing="-2">FLOWELL</text>
+        <text x="40" y="135" letterSpacing="-2">FLOW</text>
+        <text x="318" y="135" letterSpacing="-2" fill="#F1C40F">ELL</text>
       </g>
       <polygon points="258,45 320,82 285,85 345,125 270,95 295,92 235,55" fill="#F1C40F"/>
     </svg>

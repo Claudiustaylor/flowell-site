@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Search, Play, Pause, ShoppingBag, Plus, SlidersHorizontal, X, Music, Clock, Tag, DollarSign, Link as LinkIcon, Upload } from 'lucide-react'
 import { supabase, Beat } from '@/lib/supabase'
@@ -36,6 +36,7 @@ export default function BeatsPage() {
   const [playing, setPlaying] = useState<string | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [adminOpen, setAdminOpen] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   // Upload form state
   const [upTitle, setUpTitle] = useState('')
@@ -228,9 +229,27 @@ export default function BeatsPage() {
         {filtered.map((beat, i) => (
           <div key={beat.id} className="group flex items-center gap-4 md:gap-6 p-4 md:p-5 border border-white/5 hover:border-[#f1c40f]/30 bg-black hover:bg-neutral-900/30 transition-all">
             <span className="text-xs font-mono text-white/20 w-6">{String(i + 1).padStart(2, '0')}</span>
-            <button onClick={() => setPlaying(playing === beat.id ? null : beat.id)} className="w-10 h-10 flex items-center justify-center border border-white/20 group-hover:border-[#f1c40f] group-hover:text-[#f1c40f] transition-all flex-shrink-0">
-              {playing === beat.id ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
-            </button>
+            {beat.audio_url ? (
+              <button onClick={() => {
+                if (playing === beat.id) {
+                  audioRef.current?.pause()
+                  setPlaying(null)
+                } else {
+                  if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0 }
+                  const a = new Audio(beat.audio_url)
+                  a.play().catch(() => {})
+                  audioRef.current = a
+                  a.onended = () => setPlaying(null)
+                  setPlaying(beat.id)
+                }
+              }} className="w-10 h-10 flex items-center justify-center border border-white/20 group-hover:border-[#f1c40f] group-hover:text-[#f1c40f] transition-all flex-shrink-0">
+                {playing === beat.id ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
+              </button>
+            ) : (
+              <button className="w-10 h-10 flex items-center justify-center border border-white/10 text-white/20 flex-shrink-0 cursor-not-allowed" title="Preview unavailable">
+                <Play className="w-4 h-4 fill-current" />
+              </button>
+            )}
             <div className="flex-1 min-w-0">
               <h3 className="font-bold text-sm md:text-base tracking-wide truncate">{beat.title}</h3>
             </div>

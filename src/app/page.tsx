@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Zap, Play, ArrowRight, Music, ShoppingBag, Star } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { ParticleCanvas } from '@/components/ParticleCanvas'
 
 const packs = [
   {
@@ -57,9 +58,11 @@ export default function HomePage() {
     <div className="bg-black">
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Fireflies particle effect */}
+        <ParticleCanvas />
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-neutral-900" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.08)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-neutral-900 z-[1]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.08)_0%,_transparent_70%)] z-[1]" />
 
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <div className={`transition-all duration-1000 ${scrolled ? 'opacity-0 -translate-y-8' : 'opacity-100'}`}>

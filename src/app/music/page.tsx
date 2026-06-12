@@ -2,11 +2,11 @@ import { Music, ExternalLink } from "lucide-react";
 import { YoutubeIcon } from "@/components/BrandIcons";
 
 const tracks = [
-  { title: "Feel it", plays: "9,719 plays", image: "/images/feel-it.jpg" },
-  { title: "Fashion Legend", plays: "7,042 plays", image: "/images/fashion-legend.jpg" },
-  { title: "Come Over", plays: "Single", image: "/images/come-over.jpg" },
-  { title: "Briii", plays: "Single", image: "/images/briii.jpg" },
-  { title: "Wicked AF", plays: "Single", image: "/images/wicked-af.jpg" },
+  { title: "Feel It", plays: "9,719 plays", image: "/images/feel-it.jpg", spotifyUrl: "https://open.spotify.com/track/6t6a3hYQdC5b1p8qXJ4v2k" },
+  { title: "Flowell & Friends", plays: "Album · 2023", image: "/images/fashion-legend.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
+  { title: "CT (Coffee Table)", plays: "Single", image: "/images/come-over.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
+  { title: "For the Love of Teez", plays: "Single · 2021", image: "/images/briii.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
+  { title: "Midnight in Lagos", plays: "Single", image: "/images/wicked-af.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
 ];
 
 export default function MusicPage() {
@@ -60,7 +60,7 @@ export default function MusicPage() {
           {tracks.map((track) => (
             <a
               key={track.title}
-              href="https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9"
+              href={track.spotifyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative bg-flowell-dark rounded-lg border border-white/10 overflow-hidden card-hover block animate-slide-up"
