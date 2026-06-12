@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" fill="none">
+  <rect width="600" height="200" fill="#000000"/>
+  <g font-family="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-style="italic" font-weight="900" font-size="96" fill="white">
+    <text x="40" y="135" letter-spacing="-2">FLOWELL</text>
+  </g>
+  <polygon points="258,45 320,82 285,85 345,125 270,95 295,92 235,55" fill="#F1C40F"/>
+</svg>
