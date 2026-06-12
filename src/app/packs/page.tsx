@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowLeft, Zap, ShoppingBag, Play, Check, Star } from 'lucide-react'
+import { Pack3DMockup } from '@/components/Pack3DMockup'
 
 const packs = [
   {
@@ -107,25 +108,13 @@ export default function PacksPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Product Image */}
               <div className="relative aspect-square bg-neutral-950 border border-white/10 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${pack.colors.bg}`} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <Zap className="w-20 h-20 mx-auto mb-4" style={{ color: pack.colors.accent, opacity: 0.3 }} />
-                    <h2 className="text-4xl font-black italic tracking-tight">{pack.name}</h2>
-                    <p className="text-sm text-white/30 mt-2 font-medium">{pack.tagline}</p>
-                  </div>
-                </div>
-
-                {pack.badge && (
-                  <div className="absolute top-6 left-6">
-                    <span
-                      className="px-4 py-2 text-xs font-black tracking-wider uppercase"
-                      style={{ background: pack.colors.accent, color: 'black' }}
-                    >
-                      {pack.badge}
-                    </span>
-                  </div>
-                )}
+                <Pack3DMockup
+                  name={pack.name}
+                  tagline={pack.tagline}
+                  accent={pack.colors.accent}
+                  gradient={pack.colors.bg}
+                  badge={pack.badge}
+                />
               </div>
 
               {/* Product Info */}
