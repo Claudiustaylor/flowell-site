@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react";
 
 const COLORS = [
-  "rgba(255, 230, 0, 0.3)",
-  "rgba(255, 214, 0, 0.25)",
-  "rgba(255, 255, 255, 0.08)",
-  "rgba(255, 230, 0, 0.15)",
-  "rgba(200, 200, 200, 0.06)",
+  "rgba(255, 230, 0, 0.7)",   // bright yellow
+  "rgba(255, 214, 0, 0.6)",    // warm yellow
+  "rgba(255, 255, 255, 0.4)",  // white
+  "rgba(255, 230, 0, 0.5)",    // yellow glow
+  "rgba(241, 196, 15, 0.6)",   // gold
 ];
 
 interface ParticleData {
@@ -19,14 +19,14 @@ interface ParticleData {
   color: string;
   life: number;
   maxLife: number;
-  trail: { x: number; y: number }[];
-  trailLength: number;
+  pulse: number;
+  pulseSpeed: number;
 }
 
 export function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<ParticleData[]>([]);
-  const mouseRef = useRef({ x: 0, y: 0 });
+  const mouseRef = useRef({ x: -9999, y: -9999 });
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
@@ -37,44 +37,50 @@ export function ParticleCanvas() {
 
     let width = 0;
     let height = 0;
+    let dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
 
     const resize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      dpr = window.devicePixelRatio || 1;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.scale(dpr, dpr);
     };
 
     const createParticle = (): ParticleData => {
       return {
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        size: Math.random() * 3 + 1.5,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        life: Math.random() * 200 + 100,
+        life: Math.random() * 400 + 200,
         maxLife: 0,
-        trail: [],
-        trailLength: Math.floor(Math.random() * 20 + 10),
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.03 + 0.01,
       };
     };
 
     const resetParticle = (p: ParticleData) => {
       p.x = Math.random() * width;
       p.y = Math.random() * height;
-      p.vx = (Math.random() - 0.5) * 0.4;
-      p.vy = (Math.random() - 0.5) * 0.4;
-      p.size = Math.random() * 1.5 + 0.5;
+      p.vx = (Math.random() - 0.5) * 0.6;
+      p.vy = (Math.random() - 0.5) * 0.6;
+      p.size = Math.random() * 3 + 1.5;
       p.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-      p.life = Math.random() * 200 + 100;
+      p.life = Math.random() * 400 + 200;
       p.maxLife = p.life;
-      p.trail = [];
-      p.trailLength = Math.floor(Math.random() * 20 + 10);
+      p.pulse = Math.random() * Math.PI * 2;
     };
 
     const init = () => {
       resize();
       particlesRef.current = [];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 60; i++) {
         const p = createParticle();
         p.maxLife = p.life;
         particlesRef.current.push(p);
@@ -91,22 +97,18 @@ export function ParticleCanvas() {
       p.x += p.vx;
       p.y += p.vy;
       p.life--;
+      p.pulse += p.pulseSpeed;
 
-      p.trail.push({ x: p.x, y: p.y });
-      if (p.trail.length > p.trailLength) {
-        p.trail.shift();
-      }
-
-      // Mouse interaction
+      // Mouse interaction - particles flee from mouse
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
-      const dx = mx - p.x;
-      const dy = my - p.y;
+      const dx = p.x - mx;
+      const dy = p.y - my;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < 200) {
-        const force = ((200 - dist) / 200) * 0.02;
-        p.vx += dx * force * 0.01;
-        p.vy += dy * force * 0.01;
+        const force = ((200 - dist) / 200) * 0.05;
+        p.vx += dx * force;
+        p.vy += dy * force;
       }
 
       if (
@@ -122,26 +124,31 @@ export function ParticleCanvas() {
 
     const draw = (p: ParticleData) => {
       const alpha = p.life / p.maxLife;
+      const pulseSize = p.size * (1 + Math.sin(p.pulse) * 0.3);
+      const glowSize = pulseSize * 4;
 
-      if (p.trail.length > 1) {
-        ctx.beginPath();
-        ctx.moveTo(p.trail[0].x, p.trail[0].y);
-        for (let i = 1; i < p.trail.length; i++) {
-          ctx.lineTo(p.trail[i].x, p.trail[i].y);
-        }
-        ctx.strokeStyle = p.color.replace(/[\d.]+\)$/, `${alpha * 0.5})`);
-        ctx.lineWidth = p.size * 0.5;
-        ctx.stroke();
-      }
+      // Draw glow
+      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowSize);
+      const baseColor = p.color.replace(/[\d.]+\)$/, '');
+      glow.addColorStop(0, baseColor + `${alpha * 0.5})`);
+      glow.addColorStop(0.5, baseColor + `${alpha * 0.15})`);
+      glow.addColorStop(1, baseColor + `0)`);
 
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color.replace(/[\d.]+\)$/, `${alpha})`);
+      ctx.arc(p.x, p.y, glowSize, 0, Math.PI * 2);
+      ctx.fillStyle = glow;
+      ctx.fill();
+
+      // Draw core
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, pulseSize * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = baseColor + `${alpha})`;
       ctx.fill();
     };
 
     const animate = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      // Clear with very slight fade for trail effect
+      ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
       ctx.fillRect(0, 0, width, height);
 
       particlesRef.current.forEach((p) => {
@@ -157,24 +164,31 @@ export function ParticleCanvas() {
       mouseRef.current.y = e.clientY;
     };
 
+    const onMouseLeave = () => {
+      mouseRef.current.x = -9999;
+      mouseRef.current.y = -9999;
+    };
+
     init();
     animate();
 
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseleave", onMouseLeave);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full z-0"
-      style={{ opacity: 0.6 }}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ opacity: 1, zIndex: 1 }}
     />
   );
 }
