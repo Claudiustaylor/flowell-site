@@ -107,7 +107,7 @@ export default function PacksPage() {
           <div key={pack.id} id={pack.id} className="scroll-mt-24">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Product Image */}
-              <div className="relative aspect-square bg-neutral-950 border border-white/10 overflow-hidden">
+              <div className="relative aspect-square bg-neutral-950 border border-white/10 p-4 md:p-8 flex items-center justify-center">
                 <Pack3DMockup
                   name={pack.name}
                   tagline={pack.tagline}
