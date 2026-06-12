@@ -59,10 +59,13 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
         {/* Fireflies particle effect */}
-        <ParticleCanvas />
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-neutral-900 z-[1]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.08)_0%,_transparent_70%)] z-[1]" />
+        <div className="absolute inset-0 z-[1]">
+          <ParticleCanvas />
+        </div>
+
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-neutral-900/80 z-[2]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.08)_0%,_transparent_70%)] z-[2]" />
 
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <div className={`transition-all duration-1000 ${scrolled ? 'opacity-0 -translate-y-8' : 'opacity-100'}`}>
