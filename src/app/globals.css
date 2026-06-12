@@ -147,4 +147,28 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* 3D Pack Mockup CSS */
+  .pack-3d-container {
+    perspective: 1200px;
+  }
+  .pack-3d-box {
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease-out;
+  }
+  .pack-3d-box:hover {
+    transform: rotateY(12deg) rotateX(-8deg);
+  }
+  .pack-face-front {
+    transform: translateZ(60px);
+  }
+  .pack-face-right {
+    transform: rotateY(90deg) translateZ(60px);
+  }
+  .pack-face-top {
+    transform: rotateX(90deg) translateZ(60px);
+  }
+  .pack-face-back {
+    transform: rotateY(180deg) translateZ(60px);
+  }
 }

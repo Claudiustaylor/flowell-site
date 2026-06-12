@@ -9,99 +9,119 @@ interface Pack3DMockupProps {
 }
 
 export function Pack3DMockup({ name, tagline, accent, gradient, badge }: Pack3DMockupProps) {
+  // Split name: "OASIS VOL. 1" → "OASIS VOL." + "1"
+  const nameParts = name.split(" ");
+  const lastWord = nameParts.pop() || "";
+  const firstPart = nameParts.join(" ");
+
   return (
-    <div className="relative w-full aspect-square perspective-[1200px] group">
-      <div
-        className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out preserve-3d group-hover:rotate-y-12 group-hover:rotate-x-[-8deg]"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Main box front face */}
+    <div className="pack-3d-container w-full h-full flex items-center justify-center p-4 md:p-6">
+      <div className="pack-3d-box relative w-full max-w-[300px] aspect-[3/4]">
+        {/* Main Front Face */}
         <div
-          className="absolute w-[70%] h-[80%] bg-neutral-950 border border-white/10 flex flex-col items-center justify-center text-center p-6 shadow-2xl"
+          className="absolute inset-0 pack-face-front bg-neutral-950 border border-white/10 flex flex-col items-center justify-center text-center p-5 overflow-hidden"
           style={{
-            transform: "translateZ(60px)",
-            background: `linear-gradient(135deg, #0a0a0a 0%, ${accent}15 50%, #0a0a0a 100%)`,
-            boxShadow: `0 25px 60px -15px ${accent}30, 0 0 80px -40px ${accent}20`,
+            background: `linear-gradient(135deg, #0a0a0a 0%, ${accent}12 50%, #0a0a0a 100%)`,
+            boxShadow: `0 20px 50px -10px ${accent}25, inset 0 1px 0 rgba(255,255,255,0.05)`,
           }}
         >
+          {/* Subtle grid pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(${accent}20 1px, transparent 1px), linear-gradient(90deg, ${accent}20 1px, transparent 1px)`,
+              backgroundSize: '20px 20px',
+            }}
+          />
+
           {badge && (
             <div
-              className="absolute top-4 left-4 px-3 py-1 text-[10px] font-black tracking-[0.2em] uppercase"
+              className="absolute top-3 left-3 px-2.5 py-1 text-[9px] font-black tracking-[0.2em] uppercase z-10"
               style={{ background: accent, color: "#000" }}
             >
               {badge}
             </div>
           )}
-          <div className="mb-4">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="mx-auto">
-              <polygon points="12,2 20,8 16,9 22,14 14,10 16,9.5 8,4" fill={accent} opacity="0.6" />
-            </svg>
-          </div>
-          <h3 className="text-2xl font-black italic tracking-tight leading-none mb-2" style={{ color: accent }}>
-            {name.split(" ").slice(0, -1).join(" ")}
-          </h3>
-          <h3 className="text-2xl font-black italic tracking-tight leading-none mb-4 text-white">
-            {name.split(" ").slice(-1)[0]}
-          </h3>
-          <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/40">{tagline}</p>
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-            <div className="text-[9px] font-mono text-white/20 uppercase tracking-wider">
-              WAV · MIDI · PROJECT
+
+          {/* Top section: icon + tagline */}
+          <div className="flex-1 flex flex-col items-center justify-center w-full z-10">
+            <div className="mb-4">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="mx-auto drop-shadow-lg">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill={accent} opacity="0.9" />
+              </svg>
             </div>
-            <div className="text-xs font-black" style={{ color: accent }}>
+            <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/30 mb-6">{tagline}</p>
+          </div>
+
+          {/* Middle: Title */}
+          <div className="z-10 mb-auto mt-2">
+            <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter leading-none" style={{ color: accent }}>
+              {firstPart}
+            </h3>
+            <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter leading-none text-white">
+              {lastWord}
+            </h3>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="absolute bottom-0 left-0 right-0 flex justify-between items-center px-4 py-3 border-t border-white/5 z-10">
+            <div className="text-[8px] font-mono text-white/20 uppercase tracking-wider">
+              WAV · MIDI · STEMS
+            </div>
+            <div className="text-[10px] font-black" style={{ color: accent }}>
               VOL. 1
             </div>
           </div>
         </div>
 
-        {/* Right side face */}
+        {/* Right edge (thickness) */}
         <div
-          className="absolute w-[20%] h-[80%] bg-neutral-900 border border-white/5"
+          className="absolute top-0 bottom-0 right-0 w-[40px] bg-neutral-900 border-r border-white/5"
           style={{
-            transform: "rotateY(90deg) translateZ(60px)",
-            right: "15%",
+            transform: "rotateY(90deg)",
+            transformOrigin: "right center",
             background: `linear-gradient(to bottom, #111 0%, ${accent}08 100%)`,
           }}
         />
 
-        {/* Top face */}
+        {/* Bottom edge (thickness) */}
         <div
-          className="absolute w-[70%] h-[20%] bg-neutral-900 border border-white/5"
+          className="absolute bottom-0 left-0 right-0 h-[40px] bg-neutral-900 border-b border-white/5"
           style={{
-            transform: "rotateX(90deg) translateZ(60px)",
-            top: "10%",
+            transform: "rotateX(-90deg)",
+            transformOrigin: "bottom center",
             background: `linear-gradient(to right, #111 0%, ${accent}05 100%)`,
           }}
         />
 
         {/* Back face */}
         <div
-          className="absolute w-[70%] h-[80%] bg-neutral-950 border border-white/5 flex items-center justify-center"
+          className="absolute inset-0 bg-neutral-950 border border-white/5 flex items-center justify-center"
           style={{
-            transform: "rotateY(180deg) translateZ(60px)",
+            transform: "rotateY(180deg) translateZ(40px)",
             background: "linear-gradient(135deg, #050505 0%, #0a0a0a 100%)",
           }}
         >
-          <div className="text-center opacity-30">
-            <p className="text-[8px] font-mono tracking-wider uppercase text-white/40 mb-2">Tracklist</p>
-            <div className="space-y-1">
-              {[1,2,3,4,5].map(i => (
+          <div className="text-center opacity-20 px-6">
+            <p className="text-[8px] font-mono tracking-wider uppercase text-white/30 mb-3">Tracklist</p>
+            <div className="space-y-1.5">
+              {[1,2,3,4,5,6,7,8].map(i => (
                 <div key={i} className="flex items-center gap-2">
                   <span className="text-[7px] font-mono text-white/20">{String(i).padStart(2,'0')}</span>
-                  <div className="w-16 h-px bg-white/10" />
+                  <div className="w-20 h-px bg-white/10" />
                 </div>
               ))}
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5">
+              <p className="text-[7px] font-mono text-white/15">FLOWELL SOUND STUDIOS</p>
             </div>
           </div>
         </div>
 
-        {/* Shadow/reflection plane */}
+        {/* Shadow plane */}
         <div
-          className="absolute w-[70%] h-[20%] bg-black/40 blur-xl"
-          style={{
-            transform: "rotateX(90deg) translateZ(-100px)",
-            bottom: "0%",
-          }}
+          className="absolute left-[10%] right-[10%] bottom-[-60px] h-[60px] bg-black/50 blur-2xl"
+          style={{ transform: "rotateX(90deg)", transformOrigin: "center top" }}
         />
       </div>
     </div>
