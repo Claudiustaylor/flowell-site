@@ -9,23 +9,29 @@ interface Pack3DMockupProps {
 }
 
 export function Pack3DMockup({ name, tagline, accent, gradient, badge }: Pack3DMockupProps) {
-  // Split name: "OASIS VOL. 1" → "OASIS VOL." + "1"
   const nameParts = name.split(" ");
   const lastWord = nameParts.pop() || "";
   const firstPart = nameParts.join(" ");
 
+  // Fixed box dimensions for precise 3D positioning
+  const W = 260;  // width
+  const H = 340;  // height  
+  const D = 60;   // depth
+
   return (
-    <div className="pack-3d-container w-full h-full flex items-center justify-center p-4 md:p-6">
-      <div className="pack-3d-box relative w-full max-w-[300px] aspect-[3/4]">
-        {/* Main Front Face */}
+    <div className="pack-3d-container w-full h-full flex items-center justify-center p-4">
+      <div className="pack-3d-box relative"
+        style={{ width: W, height: H, transformStyle: 'preserve-3d' }}
+      >
+        {/* Front Face */}
         <div
-          className="absolute inset-0 pack-face-front bg-neutral-950 border border-white/10 flex flex-col items-center justify-center text-center p-5 overflow-hidden"
+          className="absolute inset-0 bg-neutral-950 border border-white/10 flex flex-col items-center justify-center text-center p-5 overflow-hidden"
           style={{
+            transform: `translateZ(${D/2}px)`,
             background: `linear-gradient(135deg, #0a0a0a 0%, ${accent}12 50%, #0a0a0a 100%)`,
             boxShadow: `0 20px 50px -10px ${accent}25, inset 0 1px 0 rgba(255,255,255,0.05)`,
           }}
         >
-          {/* Subtle grid pattern */}
           <div
             className="absolute inset-0 opacity-[0.03]"
             style={{
@@ -43,7 +49,6 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge }: Pack3DM
             </div>
           )}
 
-          {/* Top section: icon + tagline */}
           <div className="flex-1 flex flex-col items-center justify-center w-full z-10">
             <div className="mb-4">
               <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="mx-auto drop-shadow-lg">
@@ -53,17 +58,15 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge }: Pack3DM
             <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/30 mb-6">{tagline}</p>
           </div>
 
-          {/* Middle: Title */}
           <div className="z-10 mb-auto mt-2">
-            <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter leading-none" style={{ color: accent }}>
+            <h3 className="text-xl font-black italic tracking-tighter leading-none" style={{ color: accent }}>
               {firstPart}
             </h3>
-            <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter leading-none text-white">
+            <h3 className="text-xl font-black italic tracking-tighter leading-none text-white">
               {lastWord}
             </h3>
           </div>
 
-          {/* Bottom bar */}
           <div className="absolute bottom-0 left-0 right-0 flex justify-between items-center px-4 py-3 border-t border-white/5 z-10">
             <div className="text-[8px] font-mono text-white/20 uppercase tracking-wider">
               WAV · MIDI · STEMS
@@ -74,31 +77,53 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge }: Pack3DM
           </div>
         </div>
 
-        {/* Right edge (thickness) */}
+        {/* Right Face */}
         <div
-          className="absolute top-0 bottom-0 right-0 w-[40px] bg-neutral-900 border-r border-white/5"
+          className="absolute bg-neutral-900 border border-white/5"
           style={{
-            transform: "rotateY(90deg)",
-            transformOrigin: "right center",
+            width: D,
+            height: H,
+            left: W - D/2,
+            top: 0,
+            transform: `rotateY(90deg)`,
+            transformOrigin: 'center center',
             background: `linear-gradient(to bottom, #111 0%, ${accent}08 100%)`,
           }}
         />
 
-        {/* Bottom edge (thickness) */}
+        {/* Top Face */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-[40px] bg-neutral-900 border-b border-white/5"
+          className="absolute bg-neutral-900 border border-white/5"
           style={{
-            transform: "rotateX(-90deg)",
-            transformOrigin: "bottom center",
+            width: W,
+            height: D,
+            left: 0,
+            top: -D/2,
+            transform: `rotateX(90deg)`,
+            transformOrigin: 'center center',
             background: `linear-gradient(to right, #111 0%, ${accent}05 100%)`,
           }}
         />
 
-        {/* Back face */}
+        {/* Bottom Face */}
+        <div
+          className="absolute bg-neutral-900 border border-white/5"
+          style={{
+            width: W,
+            height: D,
+            left: 0,
+            top: H - D/2,
+            transform: `rotateX(-90deg)`,
+            transformOrigin: 'center center',
+            background: `linear-gradient(to right, #111 0%, ${accent}05 100%)`,
+          }}
+        />
+
+        {/* Back Face */}
         <div
           className="absolute inset-0 bg-neutral-950 border border-white/5 flex items-center justify-center"
           style={{
-            transform: "rotateY(180deg) translateZ(40px)",
+            transform: `rotateY(180deg) translateZ(${D/2}px)`,
             background: "linear-gradient(135deg, #050505 0%, #0a0a0a 100%)",
           }}
         >
@@ -118,10 +143,17 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge }: Pack3DM
           </div>
         </div>
 
-        {/* Shadow plane */}
+        {/* Shadow */}
         <div
-          className="absolute left-[10%] right-[10%] bottom-[-60px] h-[60px] bg-black/50 blur-2xl"
-          style={{ transform: "rotateX(90deg)", transformOrigin: "center top" }}
+          className="absolute bg-black/40 blur-2xl"
+          style={{
+            width: W * 0.8,
+            height: 40,
+            left: W * 0.1,
+            top: H + 20,
+            transform: `rotateX(90deg)`,
+            transformOrigin: 'center top',
+          }}
         />
       </div>
     </div>

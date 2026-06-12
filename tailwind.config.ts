@@ -6,6 +6,16 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "pack-3d-container",
+    "pack-3d-box",
+    "pack-face-front",
+    "pack-face-right",
+    "pack-face-top",
+    "pack-face-back",
+    "preserve-3d",
+    "perspective-[1200px]",
+  ],
   theme: {
     extend: {
       colors: {

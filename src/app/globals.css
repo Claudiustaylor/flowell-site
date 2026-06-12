@@ -155,9 +155,10 @@
   .pack-3d-box {
     transform-style: preserve-3d;
     transition: transform 0.7s ease-out;
+    transform: rotateY(-20deg) rotateX(8deg);
   }
   .pack-3d-box:hover {
-    transform: rotateY(12deg) rotateX(-8deg);
+    transform: rotateY(-8deg) rotateX(2deg);
   }
   .pack-face-front {
     transform: translateZ(60px);
