@@ -1,58 +1,87 @@
 'use client'
 
 import Link from 'next/link'
-import { Zap, Play, ArrowRight, Music, ShoppingBag, Star } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { Zap, Play, Pause, ArrowRight, Music, ShoppingBag, Star, Mail, Gift } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
 import { ParticleCanvas } from '@/components/ParticleCanvas'
+import { Pack3DMockup } from '@/components/Pack3DMockup'
+import { SubscribeForm } from '@/components/SubscribeForm'
 
 const packs = [
   {
     id: 'oasis-vol-1',
     name: 'OASIS VOL. 1',
     tagline: 'Afrobeats & Afro-Fusion Essentials',
-    description: '85 loops · 40 one-shots · 15 MIDI · 5 project files. Inspired by the warmth of Tems, Wizkid, Burna Boy. Pure tropical energy.',
+    description: 'The definitive Afrobeats toolkit. 85 original loops, 40 one-shots, 15 MIDI progressions, and 5 full project files. Every sound handcrafted for modern Afro-fusion production.',
     price: 49,
-    image: '/images/pack-oasis.jpg',
+    originalPrice: 199,
     badge: 'BESTSELLER',
     colors: 'from-amber-500/20 to-yellow-500/10',
+    accent: '#f1c40f',
+    image: '/images/packs/oasis-vol-1.jpg',
+    stripeUrl: 'https://buy.stripe.com/8x228q23D6ET9Ip6hJgA800',
   },
   {
     id: 'nocturnal',
     name: 'NOCTURNAL',
     tagline: 'Dark R&B & Trapsoul Textures',
-    description: '60 loops · 35 one-shots · 10 MIDI · 3 project files. Late-night melodies, 808s that hit different, and textures for the after-hours.',
+    description: 'After-hours production. Moody pads, detuned pianos, distorted 808s, and vocal textures designed for late-night R&B and dark trap.',
     price: 49,
-    image: '/images/pack-nocturnal.jpg',
+    originalPrice: 199,
     badge: 'NEW',
     colors: 'from-purple-500/20 to-violet-500/10',
+    accent: '#a855f7',
+    image: '/images/packs/nocturnal.jpg',
+    stripeUrl: 'https://buy.stripe.com/3cI4gygYx6ET8El35xgA801',
   },
   {
     id: 'flowell-club',
     name: 'FLOWELL CLUB',
-    tagline: 'Monthly Producer Membership',
-    description: 'New pack every month + live cook-up sessions + project files + exclusive Discord access. Cancel anytime.',
-    price: 10,
-    image: '/images/pack-club.jpg',
-    badge: 'RECURRING',
+    tagline: 'Producer Community Access',
+    description: 'Join the inner circle. One-time access fee gets you into the Flowell community — cook-up sessions, project file breakdowns, and the private Discord server.',
+    price: 50,
+    badge: 'COMMUNITY',
     colors: 'from-[#f1c40f]/20 to-yellow-600/10',
+    accent: '#f1c40f',
+    image: '/images/packs/flowell-club.jpg',
+    stripeUrl: 'https://buy.stripe.com/dRm9AS6jT5APdYF35xgA804',
   },
 ]
 
 const beatPreviews = [
-  { title: 'MIDNIGHT IN LAGOS', bpm: 118, key: 'F#m', style: 'Afrobeats', duration: '2:34' },
-  { title: 'NOCTURNE', bpm: 142, key: 'Am', style: 'R&B Trap', duration: '2:18' },
-  { title: 'GOLD RUSH', bpm: 128, key: 'Dm', style: 'Hip-Hop', duration: '2:45' },
-  { title: 'PALM WINE', bpm: 105, key: 'Gm', style: 'Afro-Fusion', duration: '3:02' },
+  { title: 'DRIFT CODE', bpm: 101, key: 'Gm', style: 'Afro-Fusion', duration: '2:34', audio: '/beats/drift_code.mp3' },
+  { title: 'ISLAND CODE', bpm: 103, key: 'Bbm', style: 'Afro-Fusion', duration: '2:05', audio: '/beats/island_code.mp3' },
+  { title: 'JETLAG', bpm: 101, key: 'C#m', style: 'Afrobeats', duration: '2:31', audio: '/beats/jetlag.mp3' },
+  { title: 'NEON RAIN', bpm: 101, key: 'Gm', style: 'Afro-Fusion', duration: '2:10', audio: '/beats/neon_rain.mp3' },
 ]
 
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false)
+  const [playing, setPlaying] = useState<string | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  function togglePlay(audioUrl: string, title: string) {
+    if (playing === title) {
+      audioRef.current?.pause()
+      setPlaying(null)
+    } else {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+      }
+      const a = new Audio(audioUrl)
+      a.play().catch(() => {})
+      audioRef.current = a
+      a.onended = () => setPlaying(null)
+      setPlaying(title)
+    }
+  }
 
   return (
     <div className="bg-black">
@@ -77,7 +106,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/40 max-w-xl mx-auto mb-12 font-light tracking-wide">
-              400+ beats. Producer packs. Custom production. Built for artists who move the culture.
+              Producer packs. Custom production. Built for artists who move the culture.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -103,9 +132,9 @@ export default function HomePage() {
       <div className="border-y border-white/10 py-4 overflow-hidden">
         <div className="marquee-container">
           <div className="marquee-content text-xs font-bold tracking-[0.3em] uppercase text-white/20">
-            <span className="inline-block px-8">400+ BEATS</span>
+            <span className="inline-block px-8">BEATS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
-            <span className="inline-block px-8">300+ SONGS</span>
+            <span className="inline-block px-8">SONGS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
             <span className="inline-block px-8">PRODUCER PACKS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
@@ -113,9 +142,9 @@ export default function HomePage() {
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
             <span className="inline-block px-8">AFROBEATS · R&B · HIP-HOP</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
-            <span className="inline-block px-8">400+ BEATS</span>
+            <span className="inline-block px-8">BEATS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
-            <span className="inline-block px-8">300+ SONGS</span>
+            <span className="inline-block px-8">SONGS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
             <span className="inline-block px-8">PRODUCER PACKS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
@@ -141,46 +170,50 @@ export default function HomePage() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {packs.map((pack) => (
-            <Link
-              key={pack.id}
-              href={`/packs/#${pack.id}`}
-              className="group relative bg-neutral-950 border border-white/10 overflow-hidden card-hover block"
+            <div key={pack.id}
+              className="group relative bg-neutral-950 border border-white/10 overflow-hidden card-hover flex flex-col"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${pack.colors} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <Zap className="w-12 h-12 text-[#f1c40f]/30 mx-auto mb-2" />
-                    <p className="text-xs font-bold tracking-widest uppercase text-white/20">{pack.name}</p>
-                  </div>
-                </div>
-                {pack.badge && (
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-[#f1c40f] text-black text-xs font-bold tracking-wider uppercase">
-                      {pack.badge}
-                    </span>
-                  </div>
-                )}
+              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900 flex-shrink-0">
+                <Pack3DMockup
+                  name={pack.name}
+                  tagline={pack.tagline}
+                  accent={pack.accent}
+                  gradient={pack.colors}
+                  badge={pack.badge}
+                  image={pack.image}
+                />
               </div>
 
-              <div className="relative p-6">
+              <div className="relative p-6 flex flex-col flex-1">
                 <h3 className="text-2xl font-black italic tracking-tight mb-1">{pack.name}</h3>
                 <p className="text-sm text-[#f1c40f] font-medium mb-3">{pack.tagline}</p>
-                <p className="text-sm text-white/40 leading-relaxed mb-4">{pack.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-black">${pack.price}</span>
-                  <span className="text-xs font-bold tracking-wider uppercase text-white/30 group-hover:text-[#f1c40f] transition-colors flex items-center gap-1">
-                    Details <ArrowRight className="w-3 h-3" />
-                  </span>
+                <p className="text-sm text-white/40 leading-relaxed mb-4 flex-1">{pack.description}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-black">${pack.price}</span>
+                    {pack.originalPrice && (
+                      <span className="text-sm text-white/30 line-through">${pack.originalPrice}</span>
+                    )}
+                  </div>
                 </div>
+                <a
+                  href={pack.stripeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full text-xs justify-center"
+                >
+                  <ShoppingBag className="w-3 h-3" />
+                  Buy Now
+                </a>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* BEAT PREVIEWS */}
+      {/* BEAT PREVIEWS — Now playable */}
       <section className="py-24 px-6 bg-neutral-950 border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-16">
@@ -197,12 +230,15 @@ export default function HomePage() {
             {beatPreviews.map((beat, i) => (
               <div
                 key={beat.title}
-                className="group flex items-center gap-4 md:gap-8 p-4 md:p-6 border border-white/5 hover:border-[#f1c40f]/30 bg-black/50 hover:bg-neutral-900/50 transition-all cursor-pointer"
+                className="group flex items-center gap-4 md:gap-8 p-4 md:p-6 border border-white/5 hover:border-[#f1c40f]/30 bg-black/50 hover:bg-neutral-900/50 transition-all"
               >
                 <span className="text-xs font-mono text-white/20 w-6">{String(i + 1).padStart(2, '0')}</span>
 
-                <button className="w-10 h-10 flex items-center justify-center border border-white/20 group-hover:border-[#f1c40f] group-hover:text-[#f1c40f] transition-all">
-                  <Play className="w-4 h-4 fill-current" />
+                <button
+                  onClick={() => togglePlay(beat.audio, beat.title)}
+                  className="w-10 h-10 flex items-center justify-center border border-white/20 group-hover:border-[#f1c40f] group-hover:text-[#f1c40f] transition-all flex-shrink-0"
+                >
+                  {playing === beat.title ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
                 </button>
 
                 <div className="flex-1 min-w-0">
@@ -228,6 +264,25 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* EMAIL CAPTURE */}
+      <section className="py-24 px-6 border-y border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.04)_0%,_transparent_70%)]" />
+        <div className="relative max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-6">
+            <Zap className="w-3 h-3 text-[#f1c40f]" />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 4</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
+            GET A FREE BEAT.<br />
+            <span className="text-[#f1c40f]">HEAR FEARS FIRST.</span>
+          </h2>
+          <p className="text-white/50 mb-10 max-w-md mx-auto">
+            Join the list. Get an exclusive beat download instantly. Plus early access to FEARS before it drops.
+          </p>
+          <SubscribeForm source="homepage" />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-32 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.06)_0%,_transparent_70%)]" />
@@ -237,7 +292,7 @@ export default function HomePage() {
             LET&apos;S BUILD
           </h2>
           <p className="text-lg text-white/40 mb-10 max-w-lg mx-auto">
-            Need a custom beat? Full production? Mixing? I work with artists who are serious about their sound.
+            Need a custom beat? Mixing and mastering? I work with artists who are serious about their sound.
           </p>
           <Link href="/contact/" className="btn-primary">
             <Zap className="w-4 h-4" />

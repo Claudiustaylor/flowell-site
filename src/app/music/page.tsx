@@ -2,11 +2,11 @@ import { Music, ExternalLink } from "lucide-react";
 import { YoutubeIcon } from "@/components/BrandIcons";
 
 const tracks = [
-  { title: "Feel It", plays: "9,719 plays", image: "/images/feel-it.jpg", spotifyUrl: "https://open.spotify.com/track/6t6a3hYQdC5b1p8qXJ4v2k" },
-  { title: "Flowell & Friends", plays: "Album · 2023", image: "/images/fashion-legend.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
-  { title: "CT (Coffee Table)", plays: "Single", image: "/images/come-over.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
-  { title: "For the Love of Teez", plays: "Single · 2021", image: "/images/briii.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
-  { title: "Midnight in Lagos", plays: "Single", image: "/images/wicked-af.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
+  { title: "Feel It", plays: "Single · 2025", image: "/images/feel-it.jpg", spotifyUrl: "https://open.spotify.com/track/7G5pUOiUZ7UktQ8nobZ81o" },
+  { title: "Flowell & Friends", plays: "Album · 2025", image: "/images/fashion-legend.jpg", spotifyUrl: "https://open.spotify.com/album/66k8qemvgz2HTMnYizBwUO" },
+  { title: "For the Love of Teez", plays: "Beat Tape · 2025", image: "/images/briii.jpg", spotifyUrl: "https://open.spotify.com/album/1PzQPCz6H2Bq1Dl7bJdr4m" },
+  { title: "For the Love of Flowell", plays: "EP · 2025", image: "/images/come-over.jpg", spotifyUrl: "https://open.spotify.com/album/3bMmJaorUsYZteujV1cMbO" },
+  { title: "Cybernetic", plays: "Single · 2024", image: "/images/wicked-af.jpg", spotifyUrl: "https://open.spotify.com/album/3rgcLuLnazalfboRl1Nv9G" },
 ];
 
 export default function MusicPage() {
@@ -39,7 +39,7 @@ export default function MusicPage() {
           </div>
           <div className="flex items-center justify-center gap-4 mt-6">
             <a
-              href="https://www.youtube.com/channel/UCssfFn-X2kzNzrVQP89jGrg"
+              href="https://www.youtube.com/@flowellbeats"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary"

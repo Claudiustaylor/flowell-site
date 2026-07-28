@@ -10,15 +10,15 @@ const packs = [
     name: 'OASIS VOL. 1',
     tagline: 'Afrobeats & Afro-Fusion Essentials',
     price: 49,
-    originalPrice: 79,
-    image: '/images/pack-oasis.jpg',
+    originalPrice: 199,
+    image: '/images/packs/oasis-vol-1.jpg',
     badge: 'BESTSELLER',
-    description: 'The definitive Afrobeats toolkit. 85 original loops, 40 one-shots, 15 MIDI progressions, and 5 full Ableton project files. Every sound handcrafted for modern Afro-fusion production.',
+    description: 'The definitive Afrobeats toolkit. 85 original loops, 40 one-shots, 15 MIDI progressions, and 5 full project files. Every sound handcrafted for modern Afro-fusion production.',
     contents: [
       { item: 'Original Loops', count: '85', detail: 'Vocal chops, guitar licks, synth melodies, percussion loops' },
       { item: 'One-Shots', count: '40', detail: 'Kicks, snares, hi-hats, 808s, FX hits' },
       { item: 'MIDI Files', count: '15', detail: 'Chord progressions, basslines, melody patterns' },
-      { item: 'Project Files', count: '5', detail: 'Full Ableton Live 11 sessions with mixing chains' },
+      { item: 'Project Files', count: '5', detail: 'Full DAW sessions with mixing chains' },
     ],
     specs: [
       '24-bit / 44.1kHz WAV',
@@ -30,22 +30,22 @@ const packs = [
       bg: 'from-amber-900/30 to-yellow-900/20',
       accent: '#f1c40f',
     },
-    gumroadUrl: 'https://gumroad.com/l/flowell-oasis-v1',
+    gumroadUrl: 'https://buy.stripe.com/8x228q23D6ET9Ip6hJgA800',
   },
   {
     id: 'nocturnal',
     name: 'NOCTURNAL',
     tagline: 'Dark R&B & Trapsoul Textures',
     price: 49,
-    originalPrice: 69,
-    image: '/images/pack-nocturnal.jpg',
+    originalPrice: 199,
+    image: '/images/packs/nocturnal.jpg',
     badge: 'NEW',
     description: 'After-hours production. Moody pads, detuned pianos, distorted 808s, and vocal textures designed for late-night R&B and dark trap.',
     contents: [
       { item: 'Dark Loops', count: '60', detail: 'Pads, pianos, bells, atmospheric textures' },
       { item: 'One-Shots', count: '35', detail: '808s, kicks, percs, vocal chops, FX' },
       { item: 'MIDI Files', count: '10', detail: 'Melancholic progressions, trap patterns' },
-      { item: 'Project Files', count: '3', detail: 'Ableton sessions with vocal processing chains' },
+      { item: 'Project Files', count: '3', detail: 'DAW sessions with vocal processing chains' },
     ],
     specs: [
       '24-bit / 44.1kHz WAV',
@@ -57,25 +57,25 @@ const packs = [
       bg: 'from-purple-900/30 to-violet-900/20',
       accent: '#a855f7',
     },
-    gumroadUrl: 'https://gumroad.com/l/flowell-nocturnal',
+    gumroadUrl: 'https://buy.stripe.com/3cI4gygYx6ET8El35xgA801',
   },
   {
     id: 'flowell-club',
     name: 'FLOWELL CLUB',
-    tagline: 'Monthly Producer Membership',
-    price: 10,
+    tagline: 'Producer Community Access',
+    price: 50,
     originalPrice: null,
-    image: '/images/pack-club.jpg',
-    badge: 'RECURRING',
-    description: 'Join the inner circle. Every month you get a brand new producer pack, a live cook-up session, project file breakdowns, and access to the private Discord community.',
+    image: '/images/packs/flowell-club.jpg',
+    badge: 'COMMUNITY',
+    description: 'Join the inner circle. One-time access fee gets you into the Flowell community — cook-up sessions, project file breakdowns, and the private Discord server.',
     contents: [
-      { item: 'Monthly Pack', count: '1/mo', detail: 'Full loop kit, one-shots, MIDI, project file' },
-      { item: 'Live Sessions', count: '2/mo', detail: 'Real-time beat making + Q&A on Twitch' },
+      { item: 'Monthly Pack', count: '1x/mo', detail: 'Full loop kit, one-shots, MIDI, project file' },
+      { item: 'Live Sessions', count: '2x/mo', detail: 'Real-time beat making + Q&A streams' },
       { item: 'Project Files', count: 'Unlimited', detail: 'Access to all past project files' },
       { item: 'Community', count: 'Discord', detail: 'Private server with feedback channels' },
     ],
     specs: [
-      'Cancel anytime',
+      'One-time payment',
       'Past packs included',
       'Priority support',
       'Exclusive previews',
@@ -84,7 +84,7 @@ const packs = [
       bg: 'from-yellow-900/30 to-amber-900/20',
       accent: '#f1c40f',
     },
-    gumroadUrl: 'https://gumroad.com/l/flowell-club',
+    gumroadUrl: 'https://buy.stripe.com/dRm9AS6jT5APdYF35xgA804',
   },
 ]
 
@@ -114,6 +114,7 @@ export default function PacksPage() {
                   accent={pack.colors.accent}
                   gradient={pack.colors.bg}
                   badge={pack.badge}
+                  image={pack.image}
                 />
               </div>
 

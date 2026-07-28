@@ -2,19 +2,23 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Search, Play, Pause, ShoppingBag, Plus, SlidersHorizontal, X, Music, Clock, Tag, DollarSign, Link as LinkIcon, Upload } from 'lucide-react'
+import { Search, Play, Pause, ShoppingBag, Plus, SlidersHorizontal, X, Music, Clock, Tag, DollarSign, Link as LinkIcon, Upload, ExternalLink } from 'lucide-react'
 import { supabase, Beat } from '@/lib/supabase'
 
 const allStyles = ['Afrobeats', 'R&B', 'Hip-Hop', 'Trap', 'Afro-Fusion', 'Lo-Fi', 'Pop']
 const allMoods = ['Energetic', 'Chill', 'Dark', 'Uplifting', 'Melancholic', 'Aggressive', 'Sexy', 'Dreamy']
 
 const demoBeats: Beat[] = [
-  { id: '1', title: 'MIDNIGHT IN LAGOS', bpm: 118, key: 'F#m', mood: ['Chill','Sexy'], style: 'Afrobeats', tags: ['guitar','percussion'], price: 49, store_url: 'https://traktrain.com/flowell', cover_url: null, audio_url: null, created_at: '' },
-  { id: '2', title: 'NOCTURNE', bpm: 142, key: 'Am', mood: ['Dark','Melancholic'], style: 'R&B', tags: ['piano','pads'], price: 49, store_url: 'https://traktrain.com/flowell', cover_url: null, audio_url: null, created_at: '' },
-  { id: '3', title: 'GOLD RUSH', bpm: 128, key: 'Dm', mood: ['Aggressive','Energetic'], style: 'Hip-Hop', tags: ['808','brass'], price: 49, store_url: 'https://traktrain.com/flowell', cover_url: null, audio_url: null, created_at: '' },
-  { id: '4', title: 'PALM WINE', bpm: 105, key: 'Gm', mood: ['Chill','Uplifting'], style: 'Afro-Fusion', tags: ['live','organic'], price: 49, store_url: 'https://traktrain.com/flowell', cover_url: null, audio_url: null, created_at: '' },
-  { id: '5', title: 'AFTER HOURS', bpm: 98, key: 'Cm', mood: ['Dark','Sexy'], style: 'Trap', tags: ['synth','808'], price: 49, store_url: 'https://traktrain.com/flowell', cover_url: null, audio_url: null, created_at: '' },
-  { id: '6', title: 'SUNSET BLVD', bpm: 110, key: 'Em', mood: ['Dreamy','Chill'], style: 'Lo-Fi', tags: [' Rhodes','vinyl'], price: 29, store_url: 'https://traktrain.com/flowell', cover_url: null, audio_url: null, created_at: '' },
+  { id: '1', title: 'DRIFT CODE', bpm: 101, key: 'Gm', mood: ['Dark','Chill'], style: 'Afro-Fusion', tags: ['guitar','percussion','burna boy'], price: 49, store_url: 'https://buy.stripe.com/bJeaEW7nX0gv9IpdKbgA80c', cover_url: '/images/beats/drift_code.jpg', audio_url: '/beats/drift_code.mp3', created_at: '2026-04-07' },
+  { id: '2', title: 'ISLAND CODE', bpm: 103, key: 'Bbm', mood: ['Dark','Energetic'], style: 'Afro-Fusion', tags: ['808','percussion','burna boy'], price: 49, store_url: 'https://buy.stripe.com/fZu5kC6jT9R5g6NeOfgA80e', cover_url: '/images/beats/island_code.jpg', audio_url: '/beats/island_code.mp3', created_at: '2026-04-06' },
+  { id: '3', title: 'JETLAG', bpm: 101, key: 'C#m', mood: ['Energetic','Uplifting'], style: 'Afrobeats', tags: ['plucks','melodic','rema'], price: 49, store_url: 'https://buy.stripe.com/dRmeVcdMl6ET6wd35xgA809', cover_url: '/images/beats/jetlag.jpg', audio_url: '/beats/jetlag.mp3', created_at: '2026-04-05' },
+  { id: '4', title: 'MIDNIGHT BOUNCE', bpm: 101, key: 'Bbm', mood: ['Dark','Sexy'], style: 'Afro-Fusion', tags: ['808','club','burna boy'], price: 49, store_url: 'https://buy.stripe.com/9B6dR87nX6ET4o5cG7gA80h', cover_url: '/images/beats/midnight_bounce.jpg', audio_url: '/beats/midnight_bounce.mp3', created_at: '2026-04-04' },
+  { id: '5', title: 'NEON RAIN', bpm: 101, key: 'Gm', mood: ['Dark','Dreamy'], style: 'Afro-Fusion', tags: ['melodic','smooth','wizkid'], price: 49, store_url: 'https://buy.stripe.com/00w7sK9w5fbp9Ip0XpgA808', cover_url: '/images/beats/neon_rain.jpg', audio_url: '/beats/neon_rain.mp3', created_at: '2026-04-03' },
+  { id: '6', title: 'NO SLEEP', bpm: 101, key: 'F', mood: ['Energetic','Uplifting'], style: 'Afrobeats', tags: ['bright','club','rema'], price: 49, store_url: 'https://buy.stripe.com/cNieVc9w55AP2fX6hJgA80b', cover_url: '/images/beats/no_sleep.jpg', audio_url: '/beats/no_sleep.mp3', created_at: '2026-04-02' },
+  { id: '7', title: 'PALM SMOKE', bpm: 103, key: 'Dm', mood: ['Chill','Sexy'], style: 'Afro-Fusion', tags: ['warm','moody','burna boy'], price: 49, store_url: 'https://buy.stripe.com/14A6oG7nX7IX1bTdKbgA80f', cover_url: '/images/beats/palm_smoke.jpg', audio_url: '/beats/palm_smoke.mp3', created_at: '2026-04-01' },
+  { id: '8', title: 'PRESSURE MOVE', bpm: 103, key: 'C#m', mood: ['Aggressive','Energetic'], style: 'Afrobeats', tags: ['punchy','club','rema'], price: 49, store_url: 'https://buy.stripe.com/28EbJ0eQpaV98El49BgA80g', cover_url: '/images/beats/pressure_move.jpg', audio_url: '/beats/pressure_move.mp3', created_at: '2026-03-31' },
+  { id: '9', title: 'VELVET RUSH', bpm: 101, key: 'Bb', mood: ['Sexy','Dreamy'], style: 'Afrobeats', tags: ['smooth','melodic','rema'], price: 49, store_url: 'https://buy.stripe.com/00w9AS9w57IX5s935xgA80a', cover_url: '/images/beats/velvet_rush.jpg', audio_url: '/beats/velvet_rush.mp3', created_at: '2026-03-30' },
+  { id: '10', title: 'STAZ', bpm: 101, key: 'C#m', mood: ['Chill','Dreamy'], style: 'Afrobeats', tags: ['clean','smooth','wizkid'], price: 49, store_url: 'https://buy.stripe.com/4gM00ieQp1kzcUB35xgA80d', cover_url: '/images/beats/staz.jpg', audio_url: '/beats/staz.mp3', created_at: '2026-03-29' },
 ]
 
 function detectFromTitle(title: string) {
@@ -260,7 +264,7 @@ export default function BeatsPage() {
               <span>{beat.mood.join(', ')}</span>
             </div>
             <span className="text-sm font-black tabular-nums">${beat.price}</span>
-            <a href={beat.store_url} target="_blank" rel="noopener noreferrer" className="opacity-0 group-hover:opacity-100 transition-opacity btn-primary py-2 px-3 text-xs">
+            <a href={beat.store_url} target="_blank" rel="noopener noreferrer" className="btn-primary py-2 px-3 text-xs whitespace-nowrap">
               <ShoppingBag className="w-3 h-3" />
               Buy
             </a>
@@ -274,6 +278,28 @@ export default function BeatsPage() {
           <p className="text-sm">No beats match your filters.</p>
         </div>
       )}
+
+      {/* Browse More Beats CTA */}
+      <div className="mt-16 relative overflow-hidden rounded-lg border border-[#f1c40f]/30 bg-gradient-to-r from-[#f1c40f]/10 via-black to-black p-8 md:p-12 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.06)_0%,_transparent_70%)]" />
+        <div className="relative">
+          <h2 className="text-2xl md:text-3xl font-black italic tracking-tighter mb-4">
+            BROWSE MORE BEATS
+          </h2>
+          <p className="text-white/50 max-w-xl mx-auto mb-8">
+            Stream every beat, lease instantly, and download your files in seconds.
+          </p>
+          <a
+            href="https://traktrain.com/flowellbeats"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Explore Full Catalog
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

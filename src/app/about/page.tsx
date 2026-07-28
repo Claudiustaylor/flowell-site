@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { Zap, Music, Globe, Headphones } from 'lucide-react'
 
 const stats = [
-  { number: '400+', label: 'Beats Produced' },
-  { number: '300+', label: 'Songs Released' },
+  { number: 'Beats', label: 'Produced' },
+  { number: 'Songs', label: 'Released' },
   { number: '6', label: 'Genres' },
   { number: '∞', label: 'Vibes' },
 ]
@@ -35,17 +35,12 @@ export default function AboutPage() {
           </div>
 
           <div className="aspect-[4/5] bg-neutral-950 border border-white/10 overflow-hidden relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <svg viewBox="0 0 600 200" className="w-48 mx-auto mb-4 opacity-20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g fontFamily="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" fontStyle="italic" fontWeight="900" fontSize="96" fill="white">
-                    <text x="40" y="135" letterSpacing="-2">FLOWELL</text>
-                  </g>
-                  <polygon points="258,45 320,82 285,85 345,125 270,95 295,92 235,55" fill="#F1C40F" opacity="0.5"/>
-                </svg>
-                <p className="text-xs font-bold tracking-widest uppercase text-white/20">Producer · Artist · Engineer</p>
-              </div>
-            </div>
+            <img
+              src="/images/flowell-spotify-profile-640.jpg"
+              alt="Flowell"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
         </div>
       </section>

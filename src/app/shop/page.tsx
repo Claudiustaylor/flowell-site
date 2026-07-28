@@ -13,8 +13,8 @@ const licenseTiers = [
       "Non-exclusive license",
       "No commercial use",
     ],
-    cta: "Buy on Traktrain",
-    ctaLink: "https://traktrain.com/flowell",
+    cta: "Buy via Stripe",
+    ctaLink: "https://buy.stripe.com/00w7sK23Dfbp4o58pRgA805",
     featured: false,
   },
   {
@@ -26,8 +26,8 @@ const licenseTiers = [
       "Non-exclusive license",
       "Commercial use allowed",
     ],
-    cta: "Buy on Traktrain",
-    ctaLink: "https://traktrain.com/flowell",
+    cta: "Buy via Stripe",
+    ctaLink: "https://buy.stripe.com/5kQ00i9w56ET4o521tgA806",
     featured: false,
   },
   {
@@ -39,8 +39,8 @@ const licenseTiers = [
       "Non-exclusive license",
       "Full commercial rights",
     ],
-    cta: "Buy on Traktrain",
-    ctaLink: "https://traktrain.com/flowell",
+    cta: "Buy via Stripe",
+    ctaLink: "https://buy.stripe.com/3cIeVcbEdfbpaMt9tVgA807",
     featured: true,
   },
   {
@@ -63,21 +63,21 @@ const products = [
     name: "Flowell Mini Pack Vol. 1",
     price: "$19",
     desc: "25 loops + 25 one-shots + 10 MIDI. Perfect for testing the sound.",
-    link: "https://gumroad.com/l/flowell-mini-pack",
+    link: "https://buy.stripe.com/00wdR8cIhe7lg6NgWngA802",
     featured: false,
   },
   {
     name: "Flowell Signature Kit",
     price: "$49",
     desc: "100 one-shots + 60 loops + 20 presets + 5 project files. The full arsenal.",
-    link: "https://gumroad.com/l/flowell-signature",
+    link: "https://buy.stripe.com/bJe9AS6jT7IX4o59tVgA803",
     featured: true,
   },
   {
     name: "Flowell Club",
-    price: "$10/mo",
-    desc: "Monthly kit + livestream cook-up + project files. Recurring fire.",
-    link: "https://patreon.com/flowell",
+    price: "$50",
+    desc: "One-time community access. Monthly pack + cook-up sessions + project files + Discord.",
+    link: "https://buy.stripe.com/dRm9AS6jT5APdYF35xgA804",
     featured: false,
   },
 ];
@@ -188,6 +188,31 @@ export default function ShopPage() {
         </div>
       </section>
 
+      {/* Browse More Beats CTA */}
+      <section className="mb-20">
+        <div className="relative overflow-hidden rounded-lg border border-[#f1c40f]/30 bg-gradient-to-r from-[#f1c40f]/10 via-black to-black p-8 md:p-12 text-center">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.06)_0%,_transparent_70%)]" />
+          <div className="relative">
+            <Zap className="w-10 h-10 text-[#f1c40f] mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-black italic tracking-tighter mb-4">
+              BROWSE MORE BEATS
+            </h2>
+            <p className="text-white/50 max-w-xl mx-auto mb-8">
+              Stream every beat, lease instantly, and download your files in seconds.
+            </p>
+            <a
+              href="https://traktrain.com/flowellbeats"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Explore Full Catalog
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="mb-20">
         <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
           <Zap className="w-5 h-5 text-flowell-yellow" />
@@ -196,19 +221,19 @@ export default function ShopPage() {
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
-              service: "Custom Beat",
-              price: "$200 – $500",
-              desc: "Original production tailored to your artist profile. 3 revisions included.",
-            },
-            {
               service: "Mixing",
               price: "$150 – $300",
-              desc: "Professional mix per track. Stems delivery. 2 revision rounds.",
+              desc: "Professional mix per track. Balanced levels, EQ, compression, and spatial processing. Stems delivery. 2 revision rounds.",
             },
             {
-              service: "Full Production",
-              price: "$1,000 – $2,500",
-              desc: "Beat + mix + master + arrangement. Full project file included.",
+              service: "Mastering",
+              price: "$75 – $150",
+              desc: "Final polish per track. Loudness optimization, stereo widening, and format delivery for all platforms. 2 revision rounds.",
+            },
+            {
+              service: "Mixing & Mastering",
+              price: "$200 – $450",
+              desc: "Full mix and master package. From raw stems to release-ready. Includes all formats + unlimited revisions within scope.",
             },
           ].map((s, i) => (
             <motion.div

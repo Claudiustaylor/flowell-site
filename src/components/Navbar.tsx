@@ -4,15 +4,14 @@ import { useState } from 'react'
 import { Menu, X, Zap } from 'lucide-react'
 import Link from 'next/link'
 
-function FlowellLogo({ className = 'w-32' }: { className?: string }) {
+function FlowellLogo({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 600 200" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g fontFamily="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" fontStyle="italic" fontWeight="900" fontSize="96" fill="white">
-        <text x="40" y="135" letterSpacing="-2">FLOW</text>
-        <text x="318" y="135" letterSpacing="-2" fill="#F1C40F">ELL</text>
-      </g>
-      <polygon points="258,45 320,82 285,85 345,125 270,95 295,92 235,55" fill="#F1C40F"/>
-    </svg>
+    <img
+      src="/images/flowell-logo.jpg"
+      alt="FLOWELL"
+      className={className}
+      style={{ objectFit: 'cover', display: 'block' }}
+    />
   )
 }
 
@@ -23,16 +22,23 @@ const navLinks = [
   { href: '/about/', label: 'About' },
 ]
 
+const navActions = [
+  { href: '/subscribe/', label: 'Free Beat', primary: false },
+  { href: '/beats/', label: 'Shop Beats', primary: true },
+]
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <FlowellLogo className="h-8 w-auto" />
-        </Link>
+      {/* Logo pinned to far left */}
+      <Link href="/" className="absolute left-0 top-0 h-16 flex items-center pl-4 z-10">
+        <FlowellLogo className="h-14 w-14 rounded-none" />
+      </Link>
 
+      {/* Nav links centered */}
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-center">
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -43,6 +49,12 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/subscribe/"
+            className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f] hover:text-white transition-colors"
+          >
+            Free Beat
+          </Link>
           <Link
             href="/beats/"
             className="btn-primary text-xs py-2 px-4"
@@ -72,6 +84,13 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/subscribe/"
+            className="block text-sm font-bold tracking-wider uppercase text-[#f1c40f] hover:text-white"
+            onClick={() => setMobileOpen(false)}
+          >
+            Free Beat
+          </Link>
         </div>
       )}
     </nav>

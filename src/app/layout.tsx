@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +13,13 @@ export const metadata: Metadata = {
     description: "Afrobeats, R&B, and hip-hop production",
     type: "website",
   },
+  icons: {
+    icon: '/images/favicon-bolt.svg',
+    apple: '/images/flowell-logo.jpg',
+  },
 };
+
+const GA_ID = "G-ZY38V4JW78";
 
 export default function RootLayout({
   children,
@@ -21,6 +28,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </head>
       <body className="bg-black text-white min-h-screen">
         <div className="grain-overlay" />
         <Navbar />
