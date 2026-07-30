@@ -20,11 +20,7 @@ const navLinks = [
   { href: '/packs/', label: 'Packs' },
   { href: '/music/', label: 'Music' },
   { href: '/about/', label: 'About' },
-]
-
-const navActions = [
-  { href: '/subscribe/', label: 'Free Beat', primary: false },
-  { href: '/beats/', label: 'Shop Beats', primary: true },
+  { href: '/press/', label: 'Press' },
 ]
 
 export default function Navbar() {
