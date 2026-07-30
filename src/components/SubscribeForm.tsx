@@ -38,8 +38,9 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
       setEmail('')
 
       // Track signup conversion in Google Analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'subscribe', {
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void }
+      if (typeof window !== 'undefined' && w.gtag) {
+        w.gtag('event', 'subscribe', {
           event_category: 'engagement',
           event_label: source,
           value: 1,

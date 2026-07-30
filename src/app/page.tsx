@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Zap, Play, Pause, ArrowRight, Music, ShoppingBag, Star, Mail, Gift } from 'lucide-react'
+import { Zap, Play, Pause, ArrowRight, ShoppingBag } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { ParticleCanvas } from '@/components/ParticleCanvas'
 import { Pack3DMockup } from '@/components/Pack3DMockup'
@@ -155,6 +155,50 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* FEATURED VIDEO — New Release */}
+      <section className="py-24 px-6 max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-6">
+            <span className="w-2 h-2 bg-[#f1c40f] rounded-full animate-pulse" />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">New Release</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
+            FEAR OF GOD
+          </h2>
+          <p className="text-sm text-white/40 mb-8 max-w-md mx-auto">
+            Lead single from the upcoming album <span className="text-[#f1c40f]">FEARS</span> — dropping September 4.
+          </p>
+        </div>
+
+        <div className="relative aspect-video w-full overflow-hidden border border-white/10 bg-black">
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src="https://www.youtube.com/embed/lZcG8dWsPCI"
+            title="Flowell — Fear of God"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="https://too.fm/fog"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-sm"
+          >
+            <Play className="w-4 h-4" />
+            Stream Everywhere
+          </a>
+          <Link href="/subscribe/" className="btn-outline text-sm">
+            <Zap className="w-4 h-4" />
+            Get FEARS Early
+          </Link>
+        </div>
+      </section>
 
       {/* PACKS */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
