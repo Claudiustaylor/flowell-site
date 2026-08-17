@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Zap, Play, Pause, ArrowRight, ShoppingBag } from 'lucide-react'
+import { Zap, Play, Pause, ArrowRight, ShoppingBag, Lock, Music, Download, Headphones } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { ParticleCanvas } from '@/components/ParticleCanvas'
 import { Pack3DMockup } from '@/components/Pack3DMockup'
@@ -155,6 +155,55 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* THE VAULT — Coming Soon */}
+      <section className="relative py-24 px-6 border-y border-[#f1c40f]/20 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.06)_0%,_transparent_70%)]" />
+        <div className="relative max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-end mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/30 mb-6">
+                <Lock className="w-3 h-3 text-[#f1c40f]" />
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">Coming Soon</span>
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-4">
+                THE <span className="text-[#f1c40f]">VAULT</span>
+              </h2>
+              <p className="text-lg text-white/50 max-w-xl leading-relaxed">
+                1,000+ beats. Every track I&apos;ve ever made. One subscription.
+              </p>
+            </div>
+            <div className="hidden md:block text-right">
+              <p className="text-xs font-bold tracking-[0.3em] uppercase text-white/30 mb-1">Monthly</p>
+              <p className="text-5xl font-black tracking-tighter">$50<span className="text-lg text-white/30 font-normal">/mo</span></p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              { icon: Music, title: '1,000+ Beats', desc: 'The complete archive. Every beat I\'ve ever produced, all in one place.' },
+              { icon: Download, title: 'Unlimited Downloads', desc: 'Download and stream every beat in the vault. No per-track fees.' },
+              { icon: Headphones, title: 'Studio Quality', desc: 'WAV files, professionally mixed and mastered. Ready for your sessions.' },
+            ].map((feat) => (
+              <div key={feat.title} className="border border-white/10 p-6 bg-neutral-950/50">
+                <feat.icon className="w-5 h-5 text-[#f1c40f] mb-4" />
+                <h3 className="text-sm font-bold tracking-wide uppercase mb-2">{feat.title}</h3>
+                <p className="text-sm text-white/40 leading-relaxed">{feat.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Link href="/vault/" className="btn-primary text-sm">
+              <Lock className="w-4 h-4" />
+              Explore The Vault
+            </Link>
+            <p className="text-xs text-white/30 tracking-wide">
+              Launching soon. Join the list for early access.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* FEATURED VIDEO — New Release */}
       <section className="py-24 px-6 max-w-5xl mx-auto">

@@ -20,6 +20,7 @@ export default function Footer() {
               {[
                 { href: '/beats/', label: 'Beats' },
                 { href: '/packs/', label: 'Packs' },
+                { href: '/vault/', label: 'The Vault' },
                 { href: '/music/', label: 'Music' },
                 { href: '/about/', label: 'About' },
                 { href: '/contact/', label: 'Contact' },

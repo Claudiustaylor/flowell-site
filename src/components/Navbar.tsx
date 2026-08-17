@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X, Zap, Lock } from 'lucide-react'
 import Link from 'next/link'
 
 function FlowellLogo({ className = '' }: { className?: string }) {
@@ -18,6 +18,7 @@ function FlowellLogo({ className = '' }: { className?: string }) {
 const navLinks = [
   { href: '/beats/', label: 'Beats' },
   { href: '/packs/', label: 'Packs' },
+  { href: '/vault/', label: 'The Vault', premium: true },
   { href: '/music/', label: 'Music' },
   { href: '/about/', label: 'About' },
   { href: '/press/', label: 'Press' },
@@ -40,8 +41,13 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs font-bold tracking-[0.2em] uppercase text-white/60 hover:text-[#f1c40f] transition-colors"
+              className={`text-xs font-bold tracking-[0.2em] uppercase transition-colors flex items-center gap-1.5 ${
+                link.premium
+                  ? 'text-[#f1c40f] hover:text-white'
+                  : 'text-white/60 hover:text-[#f1c40f]'
+              }`}
             >
+              {link.premium && <Lock className="w-3 h-3" />}
               {link.label}
             </Link>
           ))}
@@ -74,9 +80,14 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="block text-sm font-bold tracking-wider uppercase text-white/60 hover:text-[#f1c40f]"
+              className={`block text-sm font-bold tracking-wider uppercase transition-colors flex items-center gap-2 ${
+                link.premium
+                  ? 'text-[#f1c40f] hover:text-white'
+                  : 'text-white/60 hover:text-[#f1c40f]'
+              }`}
               onClick={() => setMobileOpen(false)}
             >
+              {link.premium && <Lock className="w-3.5 h-3.5" />}
               {link.label}
             </Link>
           ))}
