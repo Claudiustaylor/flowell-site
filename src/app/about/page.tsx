@@ -19,7 +19,7 @@ export default function AboutPage() {
             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter mb-6">
               FLOWELL
             </h1>
-            <p className="text-lg text-white/40 leading-relaxed mb-8">
+            <p className="text-lg text-white/60 leading-relaxed mb-8">
               Independent producer crafting worlds in sound. At the intersection of 
               Afrobeats, R&B, hip-hop, and trap — building for artists who move the culture.
             </p>
@@ -51,7 +51,7 @@ export default function AboutPage() {
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <p className="text-5xl md:text-6xl font-black italic tracking-tighter text-[#f1c40f]">{s.number}</p>
-              <p className="text-xs font-bold tracking-wider uppercase text-white/30 mt-2">{s.label}</p>
+              <p className="text-xs font-bold tracking-wider uppercase text-white/55 mt-2">{s.label}</p>
             </div>
           ))}
         </div>
@@ -62,7 +62,7 @@ export default function AboutPage() {
         <div className="space-y-12">
           <div className="grid md:grid-cols-12 gap-8">
             <div className="md:col-span-4">
-              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/30">01 — The Sound</h3>
+              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55">01 — The Sound</h3>
             </div>
             <div className="md:col-span-8">
               <p className="text-white/60 leading-relaxed text-lg">
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-12 gap-8">
             <div className="md:col-span-4">
-              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/30">02 — The Approach</h3>
+              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55">02 — The Approach</h3>
             </div>
             <div className="md:col-span-8">
               <p className="text-white/60 leading-relaxed text-lg">
@@ -92,7 +92,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-12 gap-8">
             <div className="md:col-span-4">
-              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/30">03 — The Catalog</h3>
+              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55">03 — The Catalog</h3>
             </div>
             <div className="md:col-span-8">
               <p className="text-white/60 leading-relaxed text-lg mb-6">
@@ -101,7 +101,7 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {['Hip-Hop', 'Trap', 'Afrobeat', 'Afroswing', 'R&B', 'Lo-Fi'].map(g => (
-                  <span key={g} className="px-4 py-2 border border-white/10 text-xs font-bold tracking-wider uppercase text-white/40">
+                  <span key={g} className="px-4 py-2 border border-white/10 text-xs font-bold tracking-wider uppercase text-white/60">
                     {g}
                   </span>
                 ))}

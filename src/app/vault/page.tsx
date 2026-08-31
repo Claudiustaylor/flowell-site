@@ -48,7 +48,7 @@ export default function VaultPage() {
             THE <span className="text-[#f1c40f]">VAULT</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto mb-10 font-light tracking-wide">
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 font-light tracking-wide">
             The holy grail of every beat I&apos;ve ever made. 1,000+ tracks, unlimited downloads, one subscription.
           </p>
 
@@ -66,7 +66,7 @@ export default function VaultPage() {
             </Link>
           </div>
 
-          <p className="text-sm text-white/30 tracking-wide">
+          <p className="text-sm text-white/55 tracking-wide">
             $50/month. Cancel anytime. Launching soon.
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function VaultPage() {
               <div key={feat.title} className="bg-black p-8 md:p-10">
                 <feat.icon className="w-6 h-6 text-[#f1c40f] mb-6" />
                 <h3 className="text-xl font-black italic tracking-tight mb-3">{feat.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed max-w-md">{feat.desc}</p>
+                <p className="text-sm text-white/60 leading-relaxed max-w-md">{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -108,11 +108,11 @@ export default function VaultPage() {
             <div className="flex items-baseline justify-between mb-8">
               <div>
                 <h3 className="text-2xl font-black italic tracking-tight">The Vault</h3>
-                <p className="text-sm text-white/40 mt-1">Full access subscription</p>
+                <p className="text-sm text-white/60 mt-1">Full access subscription</p>
               </div>
               <div className="text-right">
                 <p className="text-5xl font-black tracking-tighter">$50</p>
-                <p className="text-xs text-white/30 tracking-wide uppercase mt-1">per month</p>
+                <p className="text-xs text-white/55 tracking-wide uppercase mt-1">per month</p>
               </div>
             </div>
 
@@ -126,13 +126,13 @@ export default function VaultPage() {
             </div>
 
             <div className="border-t border-white/10 pt-6">
-              <p className="text-xs text-white/30 leading-relaxed mb-2">
+              <p className="text-xs text-white/55 leading-relaxed mb-2">
                 Starting at launch with 1,000+ of my own beats. The Vault will grow into a marketplace where other producers can sell their beats, and I take 5% of every sale.
               </p>
             </div>
           </div>
 
-          <p className="text-xs text-white/20 tracking-wide mt-6">
+          <p className="text-xs text-white/45 tracking-wide mt-6">
             Subscription billing handled securely via Stripe. Cancel anytime, no questions asked.
           </p>
         </div>
@@ -155,12 +155,12 @@ export default function VaultPage() {
                 <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">Phase 1 — Launch</span>
               </div>
               <h3 className="text-xl font-black italic tracking-tight mb-4">The Archive</h3>
-              <p className="text-sm text-white/40 leading-relaxed mb-6">
+              <p className="text-sm text-white/60 leading-relaxed mb-6">
                 The Vault opens with the holy grail: every beat I have ever made. 1,000+ tracks, fully downloadable, studio quality. This is the complete Flowell collection in one place.
               </p>
               <ul className="space-y-2">
                 {['1,000+ beats from the archive', 'Unlimited downloads', 'WAV quality', 'New beats added weekly'].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-white/50">
+                  <li key={item} className="flex items-center gap-3 text-sm text-white/70">
                     <Check className="w-3.5 h-3.5 text-[#f1c40f] flex-shrink-0" />
                     {item}
                   </li>
@@ -170,16 +170,16 @@ export default function VaultPage() {
 
             <div className="bg-black p-8 md:p-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-6">
-                <TrendingUp className="w-3 h-3 text-white/40" />
-                <span className="text-xs font-bold tracking-[0.2em] uppercase text-white/40">Phase 2 — Growth</span>
+                <TrendingUp className="w-3 h-3 text-white/60" />
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-white/60">Phase 2 — Growth</span>
               </div>
               <h3 className="text-xl font-black italic tracking-tight mb-4">The Marketplace</h3>
-              <p className="text-sm text-white/40 leading-relaxed mb-6">
+              <p className="text-sm text-white/60 leading-relaxed mb-6">
                 The Vault becomes a two-sided marketplace. Other producers can upload and sell their beats. I take 5% of every sale. The catalog grows beyond my own archive into a collective.
               </p>
               <ul className="space-y-2">
                 {['Producers upload and sell beats', '5% platform fee on every sale', 'Growing catalog beyond 1,000+', 'Producer discovery and ratings'].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-white/50">
+                  <li key={item} className="flex items-center gap-3 text-sm text-white/70">
                     <Check className="w-3.5 h-3.5 text-[#f1c40f] flex-shrink-0" />
                     {item}
                   </li>
@@ -201,7 +201,7 @@ export default function VaultPage() {
           <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
             BE FIRST IN.
           </h2>
-          <p className="text-white/50 mb-10 max-w-md mx-auto">
+          <p className="text-white/70 mb-10 max-w-md mx-auto">
             Join the list. Get notified the moment The Vault opens, plus exclusive early-access pricing.
           </p>
           <SubscribeForm source="vault-early-access" />
@@ -211,7 +211,7 @@ export default function VaultPage() {
       {/* FAQ-STYLE CTA */}
       <section className="py-24 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-sm text-white/30 max-w-xl mx-auto leading-relaxed mb-8">
+          <p className="text-sm text-white/55 max-w-xl mx-auto leading-relaxed mb-8">
             The Vault is a subscription service giving you access to 1,000+ beats for $50/month. Download, stream, and use them in your sessions. At launch, it&apos;s my complete archive. Later, other producers join and sell their beats too.
           </p>
           <Link href="/beats/" className="text-sm font-bold tracking-wider uppercase text-[#f1c40f] hover:text-white transition-colors inline-flex items-center gap-2">

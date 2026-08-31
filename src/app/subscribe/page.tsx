@@ -13,7 +13,7 @@ export default function SubscribePage() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-8">
           <Zap className="w-3 h-3 text-[#f1c40f]" />
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 4</span>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 9</span>
         </div>
 
         {/* Headline */}
@@ -23,8 +23,8 @@ export default function SubscribePage() {
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg text-white/50 mb-10 max-w-lg mx-auto leading-relaxed">
-          Join the list and get an exclusive beat download instantly. Plus early access to the FEARS album before it drops September 4.
+        <p className="text-lg text-white/70 mb-10 max-w-lg mx-auto leading-relaxed">
+          Join the list and get an exclusive beat download instantly. Plus early access to the FEARS album before it drops September 9.
         </p>
 
         {/* Value props */}
@@ -33,19 +33,19 @@ export default function SubscribePage() {
             <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
               <Gift className="w-5 h-5 text-[#f1c40f]" />
             </div>
-            <p className="text-xs text-white/40">Free beat<br />download</p>
+            <p className="text-xs text-white/60">Free beat<br />download</p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
               <Music className="w-5 h-5 text-[#f1c40f]" />
             </div>
-            <p className="text-xs text-white/40">Early FEARS<br />access</p>
+            <p className="text-xs text-white/60">Early FEARS<br />access</p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
               <Mail className="w-5 h-5 text-[#f1c40f]" />
             </div>
-            <p className="text-xs text-white/40">No spam.<br />Unsubscribe anytime</p>
+            <p className="text-xs text-white/60">No spam.<br />Unsubscribe anytime</p>
           </div>
         </div>
 
@@ -53,7 +53,7 @@ export default function SubscribePage() {
         <SubscribeForm source="subscribe-page" />
 
         {/* Trust line */}
-        <p className="text-white/20 text-xs mt-8">
+        <p className="text-white/45 text-xs mt-8">
           The fear was never the beats. It was whether anyone would hear ME.
         </p>
       </div>

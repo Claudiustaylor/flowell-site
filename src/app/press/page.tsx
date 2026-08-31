@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Flowell Steps From Behind the Boards on "Fear of God" — Grammy Weekly',
     description:
-      'The DMV producer turned artist puts his own voice on the mic for the first time. Lead single from the debut album Fears, out September 4.',
+      'The DMV producer turned artist puts his own voice on the mic for the first time. Lead single from the debut album Fears, out September 9.',
     type: 'article',
   },
 }
@@ -21,7 +21,7 @@ export default function PressPage() {
       <div className="px-6 max-w-3xl mx-auto mb-12">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-white/40 hover:text-[#f1c40f] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-white/60 hover:text-[#f1c40f] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
@@ -35,7 +35,7 @@ export default function PressPage() {
           <span className="px-3 py-1 bg-[#f1c40f]/10 border border-[#f1c40f]/20 text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">
             Music News
           </span>
-          <span className="text-xs text-white/30">July 29, 2026</span>
+          <span className="text-xs text-white/55">July 29, 2026</span>
         </div>
 
         {/* Title */}
@@ -44,7 +44,7 @@ export default function PressPage() {
           <span className="text-[#f1c40f]">Fears</span>
         </h1>
 
-        <p className="text-lg text-white/50 mb-8">
+        <p className="text-lg text-white/70 mb-8">
           The DMV producer turned artist puts his own voice on the mic for the first time
         </p>
 
@@ -55,13 +55,13 @@ export default function PressPage() {
           </div>
           <div>
             <p className="text-sm font-bold text-white/60">Grammy Weekly</p>
-            <p className="text-xs text-white/30">Written by Rosselia</p>
+            <p className="text-xs text-white/55">Written by Rosselia</p>
           </div>
           <a
             href="https://grammyweekly.com/flowell-steps-from-behind-the-boards-on-fear-of-god-the-lead-single-from-his-debut-album-fears/"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-auto inline-flex items-center gap-1 text-xs text-white/30 hover:text-[#f1c40f] transition-colors"
+            className="ml-auto inline-flex items-center gap-1 text-xs text-white/55 hover:text-[#f1c40f] transition-colors"
           >
             Original Article
             <ExternalLink className="w-3 h-3" />
@@ -76,7 +76,7 @@ export default function PressPage() {
 
           <p>
             The DMV based producer and recording artist releases &ldquo;Fear of God&rdquo; as the lead single from his
-            debut album <span className="text-[#f1c40f]">Fears</span>, out September 4. It is the first time Flowell
+            debut album <span className="text-[#f1c40f]">Fears</span>, out September 9. It is the first time Flowell
             steps out from behind the boards and puts his own voice front and center on a project built entirely around
             his own story.
           </p>
@@ -146,20 +146,20 @@ export default function PressPage() {
             What&rsquo;s Next for Flowell
           </h2>
           <p>
-            With Fears landing September 4, Fear of God is the marker that starts the countdown. Flowell has made it
+            With Fears landing September 9, Fear of God is the marker that starts the countdown. Flowell has made it
             clear that this album is not about easing into a new lane, it is about arriving in it fully formed. Expect
             the rollout to carry the same energy that has defined his catalog so far: layered, deliberate, and built
             for repeat plays.
           </p>
 
           <p className="text-lg text-white/80">
-            Stream &ldquo;Fear of God&rdquo; now and get familiar before Fears arrives in full on September 4.
+            Stream &ldquo;Fear of God&rdquo; now and get familiar before Fears arrives in full on September 9.
           </p>
         </div>
 
         {/* Links */}
         <div className="mt-12 space-y-3 border-y border-white/10 py-8">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/30 mb-4">Listen & Follow</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/55 mb-4">Listen & Follow</p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               { label: 'Stream "Fear of God"', href: 'https://too.fm/fog' },
@@ -174,7 +174,7 @@ export default function PressPage() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-[#f1c40f] transition-colors group"
+                className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-[#f1c40f] transition-colors group"
               >
                 <span className="w-1 h-1 bg-[#f1c40f] group-hover:scale-150 transition-transform" />
                 {link.label}
@@ -201,8 +201,8 @@ export default function PressPage() {
           </Link>
         </div>
 
-        <p className="text-center text-xs text-white/30 mt-8">
-          <span className="text-[#f1c40f]">Fears</span> drops September 4, 2026.
+        <p className="text-center text-xs text-white/55 mt-8">
+          <span className="text-[#f1c40f]">Fears</span> drops September 9, 2026.
         </p>
       </article>
     </div>

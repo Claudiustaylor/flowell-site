@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Search, Play, Pause, ShoppingBag, Plus, SlidersHorizontal, X, Music, Clock, Tag, DollarSign, Link as LinkIcon, Upload, ExternalLink } from 'lucide-react'
 import { supabase, Beat } from '@/lib/supabase'
+import { UniversalPlayer, useUniversalPlayer, type PlayerTrack } from '@/components/UniversalPlayer'
 
 const allStyles = ['Afrobeats', 'R&B', 'Hip-Hop', 'Trap', 'Afro-Fusion', 'Lo-Fi', 'Pop']
 const allMoods = ['Energetic', 'Chill', 'Dark', 'Uplifting', 'Melancholic', 'Aggressive', 'Sexy', 'Dreamy']
@@ -40,7 +41,7 @@ export default function BeatsPage() {
   const [playing, setPlaying] = useState<string | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [adminOpen, setAdminOpen] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const player = useUniversalPlayer()
 
   // Upload form state
   const [upTitle, setUpTitle] = useState('')
@@ -109,17 +110,17 @@ export default function BeatsPage() {
   }
 
   return (
-    <div className="pt-24 pb-24 px-6 max-w-7xl mx-auto">
+    <div className="pt-24 pb-32 px-6 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
           <p className="section-label">Catalog</p>
           <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter">BEATS</h1>
-          <p className="text-white/30 mt-2">{filtered.length} tracks available</p>
+          <p className="text-white/55 mt-2">{filtered.length} tracks available</p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/55" />
             <input
               type="text"
               placeholder="Search beats..."
@@ -146,38 +147,38 @@ export default function BeatsPage() {
               </DialogHeader>
               <div className="space-y-4 mt-4">
                 <div>
-                  <label className="text-xs font-bold tracking-wider uppercase text-white/30">Title</label>
+                  <label className="text-xs font-bold tracking-wider uppercase text-white/55">Title</label>
                   <input value={upTitle} onChange={e => setUpTitle(e.target.value)} className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none" placeholder="e.g. MIDNIGHT IN LAGOS" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-white/30">BPM</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-white/55">BPM</label>
                     <input value={upBpm} onChange={e => setUpBpm(e.target.value)} type="number" className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none" placeholder="120" />
                   </div>
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-white/30">Key</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-white/55">Key</label>
                     <input value={upKey} onChange={e => setUpKey(e.target.value)} className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none" placeholder="Am" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-white/30">Style</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-white/55">Style</label>
                     <select value={upStyle} onChange={e => setUpStyle(e.target.value)} className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none">
                       {allStyles.map(s => <option key={s}>{s}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-white/30">Mood</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-white/55">Mood</label>
                     <input value={upMood} onChange={e => setUpMood(e.target.value)} className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none" placeholder="Chill, Sexy" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-white/30">Price ($)</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-white/55">Price ($)</label>
                     <input value={upPrice} onChange={e => setUpPrice(e.target.value)} type="number" className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none" placeholder="49" />
                   </div>
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-white/30">Store URL</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-white/55">Store URL</label>
                     <input value={upUrl} onChange={e => setUpUrl(e.target.value)} className="w-full mt-1 px-3 py-2 bg-white/5 border border-white/10 text-sm focus:border-[#f1c40f] focus:outline-none" placeholder="https://..." />
                   </div>
                 </div>
@@ -195,33 +196,33 @@ export default function BeatsPage() {
         <div className="mb-8 p-6 border border-white/10 bg-white/[0.02]">
           <div className="grid md:grid-cols-3 gap-6">
             <div>
-              <h4 className="text-xs font-bold tracking-wider uppercase text-white/30 mb-3">Style</h4>
+              <h4 className="text-xs font-bold tracking-wider uppercase text-white/55 mb-3">Style</h4>
               <div className="flex flex-wrap gap-2">
                 {allStyles.map(s => (
-                  <button key={s} onClick={() => toggleFilter(styleFilter, s, setStyleFilter)} className={`px-3 py-1 text-xs font-bold tracking-wider uppercase border transition-colors ${styleFilter.includes(s) ? 'border-[#f1c40f] text-[#f1c40f]' : 'border-white/10 text-white/40 hover:border-white/30'}`}>
+                  <button key={s} onClick={() => toggleFilter(styleFilter, s, setStyleFilter)} className={`px-3 py-1 text-xs font-bold tracking-wider uppercase border transition-colors ${styleFilter.includes(s) ? 'border-[#f1c40f] text-[#f1c40f]' : 'border-white/10 text-white/60 hover:border-white/30'}`}>
                     {s}
                   </button>
                 ))}
               </div>
             </div>
             <div>
-              <h4 className="text-xs font-bold tracking-wider uppercase text-white/30 mb-3">Mood</h4>
+              <h4 className="text-xs font-bold tracking-wider uppercase text-white/55 mb-3">Mood</h4>
               <div className="flex flex-wrap gap-2">
                 {allMoods.map(m => (
-                  <button key={m} onClick={() => toggleFilter(moodFilter, m, setMoodFilter)} className={`px-3 py-1 text-xs font-bold tracking-wider uppercase border transition-colors ${moodFilter.includes(m) ? 'border-[#f1c40f] text-[#f1c40f]' : 'border-white/10 text-white/40 hover:border-white/30'}`}>
+                  <button key={m} onClick={() => toggleFilter(moodFilter, m, setMoodFilter)} className={`px-3 py-1 text-xs font-bold tracking-wider uppercase border transition-colors ${moodFilter.includes(m) ? 'border-[#f1c40f] text-[#f1c40f]' : 'border-white/10 text-white/60 hover:border-white/30'}`}>
                     {m}
                   </button>
                 ))}
               </div>
             </div>
             <div>
-              <h4 className="text-xs font-bold tracking-wider uppercase text-white/30 mb-3">BPM Range</h4>
+              <h4 className="text-xs font-bold tracking-wider uppercase text-white/55 mb-3">BPM Range</h4>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-white/30 w-8">{bpmRange[0]}</span>
+                <span className="text-xs font-mono text-white/55 w-8">{bpmRange[0]}</span>
                 <input type="range" min="60" max="200" value={bpmRange[0]} onChange={e => setBpmRange([parseInt(e.target.value), bpmRange[1]])} className="flex-1 accent-[#f1c40f]" />
-                <span className="text-xs font-mono text-white/30">-</span>
+                <span className="text-xs font-mono text-white/55">-</span>
                 <input type="range" min="60" max="200" value={bpmRange[1]} onChange={e => setBpmRange([bpmRange[0], parseInt(e.target.value)])} className="flex-1 accent-[#f1c40f]" />
-                <span className="text-xs font-mono text-white/30 w-10">{bpmRange[1]}</span>
+                <span className="text-xs font-mono text-white/55 w-10">{bpmRange[1]}</span>
               </div>
             </div>
           </div>
@@ -232,32 +233,46 @@ export default function BeatsPage() {
       <div className="space-y-1">
         {filtered.map((beat, i) => (
           <div key={beat.id} className="group flex items-center gap-4 md:gap-6 p-4 md:p-5 border border-white/5 hover:border-[#f1c40f]/30 bg-black hover:bg-neutral-900/30 transition-all">
-            <span className="text-xs font-mono text-white/20 w-6">{String(i + 1).padStart(2, '0')}</span>
+            <span className="text-xs font-mono text-white/45 w-6">{String(i + 1).padStart(2, '0')}</span>
             {beat.audio_url ? (
               <button onClick={() => {
+                const track: PlayerTrack = {
+                  id: beat.id,
+                  title: beat.title,
+                  artist: 'FLOWELL',
+                  audio_url: beat.audio_url!,
+                  cover_url: beat.cover_url,
+                  bpm: beat.bpm,
+                  key: beat.key,
+                }
+                const queue: PlayerTrack[] = filtered
+                  .filter(b => b.audio_url)
+                  .map(b => ({ id: b.id, title: b.title, artist: 'FLOWELL', audio_url: b.audio_url!, cover_url: b.cover_url, bpm: b.bpm, key: b.key }))
                 if (playing === beat.id) {
-                  audioRef.current?.pause()
-                  setPlaying(null)
+                  player?.togglePlay()
                 } else {
-                  if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0 }
-                  const a = new Audio(beat.audio_url)
-                  a.play().catch(() => {})
-                  audioRef.current = a
-                  a.onended = () => setPlaying(null)
+                  player?.playTrack(track, queue)
+                  setPlaying(beat.id)
+                }
+                // Update playing state based on player state
+                const state = player?.getState()
+                if (state?.currentTrack?.id === beat.id && !state.isPlaying) {
+                  setPlaying(null)
+                } else if (state?.currentTrack?.id === beat.id && state.isPlaying) {
                   setPlaying(beat.id)
                 }
               }} className="w-10 h-10 flex items-center justify-center border border-white/20 group-hover:border-[#f1c40f] group-hover:text-[#f1c40f] transition-all flex-shrink-0">
                 {playing === beat.id ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
               </button>
             ) : (
-              <button className="w-10 h-10 flex items-center justify-center border border-white/10 text-white/20 flex-shrink-0 cursor-not-allowed" title="Preview unavailable">
+              <button className="w-10 h-10 flex items-center justify-center border border-white/10 text-white/45 flex-shrink-0 cursor-not-allowed" title="Preview unavailable">
                 <Play className="w-4 h-4 fill-current" />
               </button>
             )}
             <div className="flex-1 min-w-0">
               <h3 className="font-bold text-sm md:text-base tracking-wide truncate">{beat.title}</h3>
             </div>
-            <div className="hidden md:flex items-center gap-6 text-xs font-mono text-white/30">
+            <div className="hidden md:flex items-center gap-6 text-xs font-mono text-white/55">
               <span>{beat.bpm} BPM</span>
               <span>{beat.key}</span>
               <span className="text-[#f1c40f]/60">{beat.style}</span>
@@ -273,7 +288,7 @@ export default function BeatsPage() {
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-24 text-white/20">
+        <div className="text-center py-24 text-white/45">
           <Music className="w-12 h-12 mx-auto mb-4" />
           <p className="text-sm">No beats match your filters.</p>
         </div>
@@ -286,7 +301,7 @@ export default function BeatsPage() {
           <h2 className="text-2xl md:text-3xl font-black italic tracking-tighter mb-4">
             BROWSE MORE BEATS
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto mb-8">
+          <p className="text-white/70 max-w-xl mx-auto mb-8">
             Stream every beat, lease instantly, and download your files in seconds.
           </p>
           <a
@@ -300,6 +315,9 @@ export default function BeatsPage() {
           </a>
         </div>
       </div>
+
+      {/* Universal Player Bar */}
+      <UniversalPlayer />
     </div>
   )
 }

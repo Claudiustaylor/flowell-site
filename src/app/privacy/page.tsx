@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       <div className="mb-12">
         <p className="section-label">Legal</p>
         <h1 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-4">PRIVACY POLICY</h1>
-        <p className="text-sm text-white/30">Last updated: June 18, 2026</p>
+        <p className="text-sm text-white/55">Last updated: June 18, 2026</p>
       </div>
 
       <div className="prose prose-invert max-w-none">

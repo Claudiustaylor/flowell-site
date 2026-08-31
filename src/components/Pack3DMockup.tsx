@@ -14,15 +14,13 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
   const lastWord = nameParts.pop() || "";
   const firstPart = nameParts.join(" ");
 
-  // Fixed box dimensions for precise 3D positioning
-  const W = 260;  // width
-  const H = 340;  // height  
-  const D = 60;   // depth
+  // Depth is fixed in px for 3D perspective effect
+  const D = 60;
 
   return (
-    <div className="pack-3d-container w-full h-full flex items-center justify-center p-4">
-      <div className="pack-3d-box relative"
-        style={{ width: W, height: H, transformStyle: 'preserve-3d' }}
+    <div className="pack-3d-container w-full h-full flex items-center justify-center">
+      <div className="pack-3d-box relative aspect-[3/4] w-[min(100%,300px)]"
+        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Front Face */}
         <div
@@ -69,7 +67,7 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill={accent} opacity="0.9" />
                   </svg>
                 </div>
-                <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/30 mb-6">{tagline}</p>
+                <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/55 mb-6">{tagline}</p>
               </div>
 
               <div className="z-10 mb-auto mt-2">
@@ -92,7 +90,7 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
           )}
 
           <div className="absolute bottom-0 left-0 right-0 flex justify-between items-center px-4 py-3 border-t border-white/5 z-10">
-            <div className="text-[8px] font-mono text-white/20 uppercase tracking-wider">
+            <div className="text-[8px] font-mono text-white/45 uppercase tracking-wider">
               WAV · MIDI · STEMS
             </div>
             <div className="text-[10px] font-black" style={{ color: accent }}>
@@ -106,8 +104,8 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
           className="absolute bg-neutral-900 border border-white/5"
           style={{
             width: D,
-            height: H,
-            left: W - D/2,
+            height: '100%',
+            right: -D/2,
             top: 0,
             transform: `rotateY(90deg)`,
             transformOrigin: 'center center',
@@ -119,7 +117,7 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
         <div
           className="absolute bg-neutral-900 border border-white/5"
           style={{
-            width: W,
+            width: '100%',
             height: D,
             left: 0,
             top: -D/2,
@@ -133,10 +131,10 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
         <div
           className="absolute bg-neutral-900 border border-white/5"
           style={{
-            width: W,
+            width: '100%',
             height: D,
             left: 0,
-            top: H - D/2,
+            bottom: -D/2,
             transform: `rotateX(-90deg)`,
             transformOrigin: 'center center',
             background: `linear-gradient(to right, #111 0%, ${accent}05 100%)`,
@@ -152,17 +150,17 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
           }}
         >
           <div className="text-center opacity-20 px-6">
-            <p className="text-[8px] font-mono tracking-wider uppercase text-white/30 mb-3">Tracklist</p>
+            <p className="text-[8px] font-mono tracking-wider uppercase text-white/55 mb-3">Tracklist</p>
             <div className="space-y-1.5">
               {[1,2,3,4,5,6,7,8].map(i => (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="text-[7px] font-mono text-white/20">{String(i).padStart(2,'0')}</span>
+                  <span className="text-[7px] font-mono text-white/45">{String(i).padStart(2,'0')}</span>
                   <div className="w-20 h-px bg-white/10" />
                 </div>
               ))}
             </div>
             <div className="mt-4 pt-3 border-t border-white/5">
-              <p className="text-[7px] font-mono text-white/15">FLOWELL SOUND STUDIOS</p>
+              <p className="text-[7px] font-mono text-white/60">FLOWELL SOUND STUDIOS</p>
             </div>
           </div>
         </div>
@@ -171,10 +169,10 @@ export function Pack3DMockup({ name, tagline, accent, gradient, badge, image }: 
         <div
           className="absolute bg-black/40 blur-2xl"
           style={{
-            width: W * 0.8,
+            width: '80%',
             height: 40,
-            left: W * 0.1,
-            top: H + 20,
+            left: '10%',
+            bottom: -30,
             transform: `rotateX(90deg)`,
             transformOrigin: 'center top',
           }}

@@ -88,7 +88,7 @@ export default function ShopPage() {
       <div className="text-center mb-16">
         <div className="section-label">Store</div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Shop</h1>
-        <p className="text-white/50 max-w-lg mx-auto">
+        <p className="text-white/70 max-w-lg mx-auto">
           Lease beats, buy packs, and join the club. All purchases support
           independent production.
         </p>
@@ -122,7 +122,7 @@ export default function ShopPage() {
               <div className="text-2xl font-bold text-flowell-yellow mb-4">
                 {product.price}
               </div>
-              <p className="text-sm text-white/50 mb-6">{product.desc}</p>
+              <p className="text-sm text-white/70 mb-6">{product.desc}</p>
               <a
                 href={product.link}
                 target="_blank"
@@ -160,7 +160,7 @@ export default function ShopPage() {
               <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
               <div className="text-3xl font-bold text-flowell-yellow mb-6">
                 {tier.price}
-                <span className="text-sm text-white/40 font-normal"> USD</span>
+                <span className="text-sm text-white/60 font-normal"> USD</span>
               </div>
               <ul className="space-y-3 mb-8">
                 {tier.features.map((f) => (
@@ -197,7 +197,7 @@ export default function ShopPage() {
             <h2 className="text-3xl md:text-4xl font-black italic tracking-tighter mb-4">
               BROWSE MORE BEATS
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto mb-8">
+            <p className="text-white/70 max-w-xl mx-auto mb-8">
               Stream every beat, lease instantly, and download your files in seconds.
             </p>
             <a
@@ -245,7 +245,7 @@ export default function ShopPage() {
             >
               <h3 className="text-lg font-bold mb-1">{s.service}</h3>
               <div className="text-flowell-yellow font-bold mb-4">{s.price}</div>
-              <p className="text-sm text-white/50 mb-6">{s.desc}</p>
+              <p className="text-sm text-white/70 mb-6">{s.desc}</p>
               <a href="/contact" className="btn-secondary w-full text-sm">
                 Book Now
               </a>

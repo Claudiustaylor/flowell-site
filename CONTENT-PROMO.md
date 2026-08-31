@@ -27,7 +27,7 @@ Last updated: July 2026
 `#fyp` `#foryou` `#foryoupage` `#viral` `#trending` `#producersoftiktok` `#beattok` `#musicproducerlife` `#cookup` `#beatmakingtiktok`
 
 ### Album Campaign (FEARS)
-`#fears` `#fearsalbum` `#fearofgod` `#flowellfears` `#newmusicalert` `#albumdrop` `#september4`
+`#fears` `#fearsalbum` `#fearofgod` `#flowellfears` `#newmusicalert` `#albumdrop` `#september9` `#9days`
 
 ---
 
@@ -39,7 +39,7 @@ Last updated: July 2026
 ```
 They said Afrobeats can't go dark. So I made FEAR OF GOD.
 
-Lead single from FEARS. Album drops September 4.
+Lead single from FEARS. Album drops September 9.
 
 Stream now — link in bio.
 
@@ -52,7 +52,7 @@ How FEAR OF GOD was built.
 
 Started with the 808 pattern. Everything else followed.
 
-Full beat breakdown on the channel. FEARS drops Sept 4.
+Full beat breakdown on the channel. FEARS drops Sept 9.
 
 #flowell #beatmaker #flstudio #musicproduction #afrobeatsproducer #cookup #producerlife #fyp #fears #studiolife
 ```
@@ -71,7 +71,7 @@ Best one gets reposted + a free pack.
 ```
 When the drop hits and the room goes quiet.
 
-FEAR OF GOD. Out now. FEARS September 4.
+FEAR OF GOD. Out now. FEARS September 9.
 
 #flowell #fearofgod #afrobeats #afrofusion #fyp #viral #musicproducer #fears #newmusic #beats
 ```
@@ -79,7 +79,7 @@ FEAR OF GOD. Out now. FEARS September 4.
 ### YouTube Shorts Captions
 
 ```
-FEAR OF GOD — the lead single from FEARS. Full video on the channel. Album September 4.
+FEAR OF GOD — the lead single from FEARS. Full video on the channel. Album September 9.
 
 #flowell #fearofgod #afrobeats #typebeat #shorts #musicproducer #fears
 ```
@@ -95,7 +95,7 @@ Making FEAR OF GOD from scratch. Full cookup on the channel.
 ```
 FEAR OF GOD — out now everywhere.
 
-The lead single from FEARS. Album drops September 4.
+The lead single from FEARS. Album drops September 9.
 
 Stream: link in bio
 Subscribe: iamflowell.com/subscribe

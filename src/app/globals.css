@@ -151,14 +151,15 @@
   /* 3D Pack Mockup CSS */
   .pack-3d-container {
     perspective: 1200px;
+    perspective-origin: 50% 50%;
   }
   .pack-3d-box {
     transform-style: preserve-3d;
     transition: transform 0.7s ease-out;
-    transform: rotateY(-20deg) rotateX(8deg);
+    transform: rotateY(-20deg) rotateX(8deg) translateX(-20px);
   }
   .pack-3d-box:hover {
-    transform: rotateY(-8deg) rotateX(2deg);
+    transform: rotateY(-8deg) rotateX(2deg) translateX(-8px);
   }
   .pack-face-front {
     transform: translateZ(60px);

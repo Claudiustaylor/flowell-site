@@ -15,7 +15,7 @@ export default function MusicPage() {
       <div className="text-center mb-16">
         <div className="section-label">Discography</div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Music</h1>
-        <p className="text-white/50 max-w-lg mx-auto">
+        <p className="text-white/70 max-w-lg mx-auto">
           Hip-hop, trap, Afrobeat, and afroswing instrumentals. Produced by Flowell.
         </p>
       </div>
@@ -74,7 +74,7 @@ export default function MusicPage() {
               </div>
               <div className="p-5">
                 <h3 className="font-bold text-lg mb-1">{track.title}</h3>
-                <p className="text-sm text-white/50">{track.plays}</p>
+                <p className="text-sm text-white/70">{track.plays}</p>
               </div>
             </a>
           ))}

@@ -354,7 +354,7 @@ Suggested sender: `hello@iamflowell.com`.
 
 - **MailerLite trial expires ~2026-08-11** (14 days left as of 2026-07-28).
   The landing page and automations stop working when it lapses. This is a hard
-  deadline that sits before the FEARS release on Sept 4.
+  deadline that sits before the FEARS release on Sept 9.
 - **Custom domain for the landing page is paid-plan only.** Page is on
   `subscribepage.io`. A branded URL generally converts better on paid social.
 - **Double opt-in confirmation subject line is premium-locked.** It currently

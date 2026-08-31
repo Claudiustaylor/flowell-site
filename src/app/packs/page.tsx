@@ -92,12 +92,12 @@ export default function PacksPage() {
   return (
     <div className="pt-24 pb-24 px-6 max-w-7xl mx-auto">
       <div className="mb-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-white/30 hover:text-[#f1c40f] transition-colors mb-8">
+        <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-white/55 hover:text-[#f1c40f] transition-colors mb-8">
           <ArrowLeft className="w-4 h-4" /> Back
         </Link>
         <p className="section-label">Producer Tools</p>
         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter">PACKS</h1>
-        <p className="text-lg text-white/30 mt-4 max-w-lg">
+        <p className="text-lg text-white/55 mt-4 max-w-lg">
           Premium sound kits for producers who demand quality. Every sound is original, mixed, and ready to drop.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default function PacksPage() {
           <div key={pack.id} id={pack.id} className="scroll-mt-24">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Product Image */}
-              <div className="relative aspect-square bg-neutral-950 border border-white/10 p-4 md:p-8 flex items-center justify-center">
+              <div className="relative aspect-[4/3] bg-neutral-950 border border-white/10 overflow-hidden flex items-center justify-center p-6 md:p-10">
                 <Pack3DMockup
                   name={pack.name}
                   tagline={pack.tagline}
@@ -123,10 +123,10 @@ export default function PacksPage() {
                 <div className="flex items-baseline gap-4 mb-2">
                   <span className="text-5xl font-black">${pack.price}</span>
                   {pack.originalPrice && (
-                    <span className="text-xl text-white/30 line-through">${pack.originalPrice}</span>
+                    <span className="text-xl text-white/55 line-through">${pack.originalPrice}</span>
                   )}
                 </div>
-                <p className="text-sm text-white/30 mb-8">One-time payment · Instant download</p>
+                <p className="text-sm text-white/55 mb-8">One-time payment · Instant download</p>
 
                 <p className="text-white/60 leading-relaxed mb-8">{pack.description}</p>
 
@@ -142,14 +142,14 @@ export default function PacksPage() {
 
                 {/* Contents */}
                 <div className="mb-8">
-                  <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/30 mb-4">What&apos;s Inside</h3>
+                  <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55 mb-4">What&apos;s Inside</h3>
                   <div className="space-y-3">
                     {pack.contents.map((c) => (
                       <div key={c.item} className="flex items-start gap-4 p-3 border border-white/5 bg-white/[0.02]">
                         <span className="text-lg font-black tabular-nums" style={{ color: pack.colors.accent }}>{c.count}</span>
                         <div>
                           <p className="font-bold text-sm">{c.item}</p>
-                          <p className="text-xs text-white/30">{c.detail}</p>
+                          <p className="text-xs text-white/55">{c.detail}</p>
                         </div>
                       </div>
                     ))}
@@ -158,10 +158,10 @@ export default function PacksPage() {
 
                 {/* Specs */}
                 <div>
-                  <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/30 mb-4">Specs</h3>
+                  <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55 mb-4">Specs</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {pack.specs.map((spec) => (
-                      <div key={spec} className="flex items-center gap-2 text-xs text-white/40">
+                      <div key={spec} className="flex items-center gap-2 text-xs text-white/60">
                         <Check className="w-3 h-3 flex-shrink-0" style={{ color: pack.colors.accent }} />
                         {spec}
                       </div>

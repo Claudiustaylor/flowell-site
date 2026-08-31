@@ -8,7 +8,7 @@ export default function ContactPage() {
       <div className="text-center mb-20 pt-16">
         <p className="section-label">Get In Touch</p>
         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter mb-6">CONTACT</h1>
-        <p className="text-lg text-white/30 max-w-lg mx-auto">
+        <p className="text-lg text-white/55 max-w-lg mx-auto">
           Bookings, beat inquiries, collaborations, and everything else.
         </p>
       </div>
@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div className="space-y-8">
           <div>
             <h2 className="text-2xl font-black italic mb-4">Let&apos;s Work</h2>
-            <p className="text-white/40 leading-relaxed mb-8">
+            <p className="text-white/60 leading-relaxed mb-8">
               Whether you&apos;re an artist looking for your next single, a promoter booking shows, 
               or a brand seeking sync licensing — get in touch.
             </p>
@@ -28,7 +28,7 @@ export default function ContactPage() {
                   <Mail className="w-4 h-4 text-[#f1c40f]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold tracking-wider uppercase text-white/30">Email</p>
+                  <p className="text-xs font-bold tracking-wider uppercase text-white/55">Email</p>
                   <a href="mailto:flowellbeats@gmail.com" className="text-white/60 hover:text-[#f1c40f] transition-colors">
                     flowellbeats@gmail.com
                   </a>
@@ -40,7 +40,7 @@ export default function ContactPage() {
                   <MapPin className="w-4 h-4 text-[#f1c40f]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold tracking-wider uppercase text-white/30">Location</p>
+                  <p className="text-xs font-bold tracking-wider uppercase text-white/55">Location</p>
                   <p className="text-white/60">DMV Area, USA</p>
                 </div>
               </div>
@@ -50,7 +50,7 @@ export default function ContactPage() {
                   <Clock className="w-4 h-4 text-[#f1c40f]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold tracking-wider uppercase text-white/30">Response Time</p>
+                  <p className="text-xs font-bold tracking-wider uppercase text-white/55">Response Time</p>
                   <p className="text-white/60">Within 24-48 hours</p>
                 </div>
               </div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
         </div>
 
         <div className="bg-neutral-950 border border-white/10 p-8">
-          <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/30 mb-6">Services</h3>
+          <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55 mb-6">Services</h3>
           <div className="space-y-4">
             {[
               { name: 'Custom Beat', price: 'From $200', desc: 'Original composition tailored to your sound' },
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <div key={s.name} className="flex items-start justify-between py-4 border-b border-white/5">
                 <div>
                   <p className="font-bold">{s.name}</p>
-                  <p className="text-xs text-white/30">{s.desc}</p>
+                  <p className="text-xs text-white/55">{s.desc}</p>
                 </div>
                 <span className="text-sm font-black text-[#f1c40f]">{s.price}</span>
               </div>

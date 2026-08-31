@@ -59,8 +59,8 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
           <Check className="w-8 h-8 text-[#f1c40f]" />
         </div>
         <h3 className="text-2xl font-black italic tracking-tight mb-2">You&apos;re in.</h3>
-        <p className="text-white/50 text-sm max-w-xs">
-          Check your inbox for the free beat download. FEARS drops September 4 — you&apos;ll hear it first.
+        <p className="text-white/70 text-sm max-w-xs">
+          Check your inbox for the free beat download. FEARS drops September 9 — you&apos;ll hear it first.
         </p>
       </div>
     )
@@ -77,7 +77,7 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
             disabled={status === 'loading'}
-            className="flex-1 px-4 py-3 bg-white/5 border border-white/10 focus:border-[#f1c40f] text-white placeholder-white/30 text-sm outline-none transition-colors disabled:opacity-50"
+            className="flex-1 px-4 py-3 bg-white/5 border border-white/10 focus:border-[#f1c40f] text-white placeholder-white/50 text-sm outline-none transition-colors disabled:opacity-50"
           />
           <button
             type="submit"
@@ -105,7 +105,7 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`w-full max-w-md ${className}`}>
+    <form onSubmit={handleSubmit} className={`w-full max-w-md mx-auto ${className}`}>
       <div className="flex flex-col gap-3">
         <input
           type="email"
@@ -114,7 +114,7 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
           onChange={(e) => setEmail(e.target.value)}
           placeholder="your@email.com"
           disabled={status === 'loading'}
-          className="w-full px-5 py-4 bg-white/5 border border-white/10 focus:border-[#f1c40f] text-white placeholder-white/30 text-base outline-none transition-colors disabled:opacity-50"
+          className="w-full px-5 py-4 bg-white/5 border border-white/10 focus:border-[#f1c40f] text-white placeholder-white/50 text-base outline-none transition-colors disabled:opacity-50"
         />
         <button
           type="submit"
@@ -140,7 +140,7 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
           {errorMsg}
         </p>
       )}
-      <p className="text-white/20 text-xs mt-4 text-center">
+      <p className="text-white/45 text-xs mt-4 text-center">
         No spam. Just beats, updates, and early access. Unsubscribe anytime.
       </p>
     </form>

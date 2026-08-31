@@ -105,7 +105,7 @@ export default function HomePage() {
               <span className="text-[#f1c40f]">ELL</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/40 max-w-xl mx-auto mb-12 font-light tracking-wide">
+            <p className="text-lg md:text-xl text-white/60 max-w-xl mx-auto mb-12 font-light tracking-wide">
               Producer packs. Custom production. Built for artists who move the culture.
             </p>
 
@@ -131,7 +131,7 @@ export default function HomePage() {
       {/* MARQUEE */}
       <div className="border-y border-white/10 py-4 overflow-hidden">
         <div className="marquee-container">
-          <div className="marquee-content text-xs font-bold tracking-[0.3em] uppercase text-white/20">
+          <div className="marquee-content text-xs font-bold tracking-[0.3em] uppercase text-white/45">
             <span className="inline-block px-8">BEATS</span>
             <span className="inline-block px-8 text-[#f1c40f]">★</span>
             <span className="inline-block px-8">SONGS</span>
@@ -169,13 +169,13 @@ export default function HomePage() {
               <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-4">
                 THE <span className="text-[#f1c40f]">VAULT</span>
               </h2>
-              <p className="text-lg text-white/50 max-w-xl leading-relaxed">
+              <p className="text-lg text-white/70 max-w-xl leading-relaxed">
                 1,000+ beats. Every track I&apos;ve ever made. One subscription.
               </p>
             </div>
             <div className="hidden md:block text-right">
-              <p className="text-xs font-bold tracking-[0.3em] uppercase text-white/30 mb-1">Monthly</p>
-              <p className="text-5xl font-black tracking-tighter">$50<span className="text-lg text-white/30 font-normal">/mo</span></p>
+              <p className="text-xs font-bold tracking-[0.3em] uppercase text-white/55 mb-1">Monthly</p>
+              <p className="text-5xl font-black tracking-tighter">$50<span className="text-lg text-white/55 font-normal">/mo</span></p>
             </div>
           </div>
 
@@ -188,7 +188,7 @@ export default function HomePage() {
               <div key={feat.title} className="border border-white/10 p-6 bg-neutral-950/50">
                 <feat.icon className="w-5 h-5 text-[#f1c40f] mb-4" />
                 <h3 className="text-sm font-bold tracking-wide uppercase mb-2">{feat.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed">{feat.desc}</p>
+                <p className="text-sm text-white/60 leading-relaxed">{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
               <Lock className="w-4 h-4" />
               Explore The Vault
             </Link>
-            <p className="text-xs text-white/30 tracking-wide">
+            <p className="text-xs text-white/55 tracking-wide">
               Launching soon. Join the list for early access.
             </p>
           </div>
@@ -215,8 +215,8 @@ export default function HomePage() {
           <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
             FEAR OF GOD
           </h2>
-          <p className="text-sm text-white/40 mb-8 max-w-md mx-auto">
-            Lead single from the upcoming album <span className="text-[#f1c40f]">FEARS</span> — dropping September 4.
+          <p className="text-sm text-white/60 mb-8 max-w-md mx-auto">
+            Lead single from the upcoming album <span className="text-[#f1c40f]">FEARS</span> — dropping September 9.
           </p>
         </div>
 
@@ -256,7 +256,7 @@ export default function HomePage() {
             <p className="section-label">Producer Tools</p>
             <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter">PACKS</h2>
           </div>
-          <Link href="/packs/" className="hidden md:flex items-center gap-2 text-sm font-bold tracking-wider uppercase text-white/40 hover:text-[#f1c40f] transition-colors">
+          <Link href="/packs/" className="hidden md:flex items-center gap-2 text-sm font-bold tracking-wider uppercase text-white/60 hover:text-[#f1c40f] transition-colors">
             View All <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -282,12 +282,12 @@ export default function HomePage() {
               <div className="relative p-6 flex flex-col flex-1">
                 <h3 className="text-2xl font-black italic tracking-tight mb-1">{pack.name}</h3>
                 <p className="text-sm text-[#f1c40f] font-medium mb-3">{pack.tagline}</p>
-                <p className="text-sm text-white/40 leading-relaxed mb-4 flex-1">{pack.description}</p>
+                <p className="text-sm text-white/60 leading-relaxed mb-4 flex-1">{pack.description}</p>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-black">${pack.price}</span>
                     {pack.originalPrice && (
-                      <span className="text-sm text-white/30 line-through">${pack.originalPrice}</span>
+                      <span className="text-sm text-white/55 line-through">${pack.originalPrice}</span>
                     )}
                   </div>
                 </div>
@@ -314,7 +314,7 @@ export default function HomePage() {
               <p className="section-label">Latest Drops</p>
               <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter">BEATS</h2>
             </div>
-            <Link href="/beats/" className="hidden md:flex items-center gap-2 text-sm font-bold tracking-wider uppercase text-white/40 hover:text-[#f1c40f] transition-colors">
+            <Link href="/beats/" className="hidden md:flex items-center gap-2 text-sm font-bold tracking-wider uppercase text-white/60 hover:text-[#f1c40f] transition-colors">
               All Beats <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -325,7 +325,7 @@ export default function HomePage() {
                 key={beat.title}
                 className="group flex items-center gap-4 md:gap-8 p-4 md:p-6 border border-white/5 hover:border-[#f1c40f]/30 bg-black/50 hover:bg-neutral-900/50 transition-all"
               >
-                <span className="text-xs font-mono text-white/20 w-6">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-xs font-mono text-white/45 w-6">{String(i + 1).padStart(2, '0')}</span>
 
                 <button
                   onClick={() => togglePlay(beat.audio, beat.title)}
@@ -338,7 +338,7 @@ export default function HomePage() {
                   <h3 className="font-bold text-sm md:text-base tracking-wide truncate">{beat.title}</h3>
                 </div>
 
-                <div className="hidden md:flex items-center gap-6 text-xs font-mono text-white/30">
+                <div className="hidden md:flex items-center gap-6 text-xs font-mono text-white/55">
                   <span>{beat.bpm} BPM</span>
                   <span>{beat.key}</span>
                   <span className="text-[#f1c40f]/60">{beat.style}</span>
@@ -363,13 +363,13 @@ export default function HomePage() {
         <div className="relative max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-6">
             <Zap className="w-3 h-3 text-[#f1c40f]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 4</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 9</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
             GET A FREE BEAT.<br />
             <span className="text-[#f1c40f]">HEAR FEARS FIRST.</span>
           </h2>
-          <p className="text-white/50 mb-10 max-w-md mx-auto">
+          <p className="text-white/70 mb-10 max-w-md mx-auto">
             Join the list. Get an exclusive beat download instantly. Plus early access to FEARS before it drops.
           </p>
           <SubscribeForm source="homepage" />
@@ -384,7 +384,7 @@ export default function HomePage() {
           <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-6">
             LET&apos;S BUILD
           </h2>
-          <p className="text-lg text-white/40 mb-10 max-w-lg mx-auto">
+          <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
             Need a custom beat? Mixing and mastering? I work with artists who are serious about their sound.
           </p>
           <Link href="/contact/" className="btn-primary">
