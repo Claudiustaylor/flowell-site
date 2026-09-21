@@ -2,6 +2,7 @@ import { Music, ExternalLink } from "lucide-react";
 import { YoutubeIcon } from "@/components/BrandIcons";
 
 const tracks = [
+  { title: "Fears", plays: "Debut Album · 2026", image: "/images/fears-cover-600.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
   { title: "Feel It", plays: "Single · 2025", image: "/images/feel-it.jpg", spotifyUrl: "https://open.spotify.com/track/7G5pUOiUZ7UktQ8nobZ81o" },
   { title: "Flowell & Friends", plays: "Album · 2025", image: "/images/fashion-legend.jpg", spotifyUrl: "https://open.spotify.com/album/66k8qemvgz2HTMnYizBwUO" },
   { title: "For the Love of Teez", plays: "Beat Tape · 2025", image: "/images/briii.jpg", spotifyUrl: "https://open.spotify.com/album/1PzQPCz6H2Bq1Dl7bJdr4m" },

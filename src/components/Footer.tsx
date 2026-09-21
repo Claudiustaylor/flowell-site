@@ -18,7 +18,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-white/55 mb-4">Navigate</h4>
             <div className="space-y-2">
               {[
-                { href: '/beats/', label: 'Beats' },
+                { href: '/merch/', label: 'Merch' },
                 { href: '/packs/', label: 'Packs' },
                 { href: '/vault/', label: 'The Vault' },
                 { href: '/music/', label: 'Music' },

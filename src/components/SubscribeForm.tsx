@@ -60,7 +60,7 @@ export function SubscribeForm({ source = 'website', variant = 'full', className 
         </div>
         <h3 className="text-2xl font-black italic tracking-tight mb-2">You&apos;re in.</h3>
         <p className="text-white/70 text-sm max-w-xs">
-          Check your inbox for the free beat download. FEARS drops September 9 — you&apos;ll hear it first.
+          Check your inbox for the free beat download. FEARS is out now — vinyl and exclusive packs are next.
         </p>
       </div>
     )

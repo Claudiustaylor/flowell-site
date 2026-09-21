@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { Zap, Play, Pause, ArrowRight, ShoppingBag, Lock, Music, Download, Headphones } from 'lucide-react'
+import { Zap, Play, Pause, ArrowRight, ShoppingBag, Lock, Music, Download, Headphones, Disc3, Disc, Truck, ShieldCheck, RotateCcw } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { ParticleCanvas } from '@/components/ParticleCanvas'
 import { Pack3DMockup } from '@/components/Pack3DMockup'
 import { SubscribeForm } from '@/components/SubscribeForm'
+import { getMerchProduct } from '@/lib/merch'
+import { useCart } from '@/components/CartContext'
 
 const packs = [
   {
@@ -56,6 +58,7 @@ const beatPreviews = [
 ]
 
 export default function HomePage() {
+  const { add } = useCart()
   const [scrolled, setScrolled] = useState(false)
   const [playing, setPlaying] = useState<string | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -125,6 +128,104 @@ export default function HomePage() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <div className="w-px h-12 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+        </div>
+      </section>
+
+      {/* FEARS — OUT NOW */}
+      <section className="relative py-24 md:py-32 px-6 overflow-hidden border-b border-white/10">
+        {/* Textured background — film grain via layered gradients */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(241,196,15,0.07)_0%,_transparent_55%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,_transparent_1px),linear-gradient(90deg,_rgba(255,255,255,0.015)_1px,_transparent_1px)] bg-[size:48px_48px]" />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(241,196,15,0.05)_0%,_transparent_70%)] blur-3xl" />
+
+        <div className="relative max-w-6xl mx-auto">
+          {/* Status line */}
+          <div className="flex items-center justify-center gap-4 mb-10">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#f1c40f]/60" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#f1c40f] text-black">
+              <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse" />
+              <span className="text-[11px] font-black tracking-[0.25em] uppercase">Out Now</span>
+            </div>
+            <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#f1c40f]/60" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* Album artwork */}
+            <div className="relative max-w-md w-full mx-auto">
+              <div className="absolute -inset-6 bg-[radial-gradient(circle,_rgba(241,196,15,0.12)_0%,_transparent_70%)] blur-2xl" />
+              <div className="relative border border-white/10 group">
+                {/* Corner accents — handcrafted frame feel */}
+                <span className="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-[#f1c40f]" />
+                <span className="absolute -top-px -right-px w-5 h-5 border-t-2 border-r-2 border-[#f1c40f]" />
+                <span className="absolute -bottom-px -left-px w-5 h-5 border-b-2 border-l-2 border-[#f1c40f]" />
+                <span className="absolute -bottom-px -right-px w-5 h-5 border-b-2 border-r-2 border-[#f1c40f]" />
+                <img
+                  src="/images/fears-cover.jpg"
+                  alt="FEARS — Flowell"
+                  className="w-full aspect-square object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Copy + actions */}
+            <div>
+              <p className="text-xs font-bold tracking-[0.3em] uppercase text-white/55 mb-3">
+                The Debut Album · 2026
+              </p>
+              <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter leading-[0.85] mb-6">
+                FEARS
+              </h2>
+              <p className="text-lg text-white/70 leading-relaxed mb-3">
+                The fear was never the beats.
+              </p>
+              <p className="text-lg text-white/70 leading-relaxed italic mb-8">
+                It was whether anyone would hear <span className="text-[#f1c40f] font-bold not-italic">ME</span>.
+              </p>
+              <p className="text-sm text-white/55 leading-relaxed mb-8 max-w-md">
+                Fourteen tracks. Shad, Carl B &amp; Lexy Priest. The producer steps from behind the boards.
+              </p>
+
+              {/* Stream buttons */}
+              <div className="flex flex-wrap items-center gap-3 mb-10">
+                <a href="https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
+                  Stream FEARS
+                </a>
+                <a href="https://www.youtube.com/watch?v=lZcG8dWsPCI" target="_blank" rel="noopener noreferrer" className="btn-outline text-sm">
+                  Watch the Visualizer
+                </a>
+              </div>
+
+              {/* Physical + exclusive offers */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <button
+                  onClick={() => add('fears-record-pack')}
+                  className="group text-left border border-[#f1c40f]/40 bg-[#f1c40f]/[0.04] p-5 hover:bg-[#f1c40f]/[0.08] hover:border-[#f1c40f] transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <Disc3 className="w-4 h-4 text-[#f1c40f]" />
+                    <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#f1c40f]">Limited</span>
+                  </div>
+                  <h3 className="text-base font-bold italic mb-1">Exclusive Record Pack — $2,500</h3>
+                  <p className="text-xs text-white/55 leading-relaxed">
+                    Stems, trackouts &amp; the full session files. One owner per beat. When it&apos;s gone, it&apos;s gone.
+                  </p>
+                </button>
+                <button
+                  onClick={() => add('fears-vinyl')}
+                  className="group text-left border border-white/15 p-5 hover:border-[#f1c40f]/60 hover:bg-white/[0.03] transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <Disc className="w-4 h-4 text-[#f1c40f]" />
+                    <span className="text-[11px] font-black tracking-[0.2em] uppercase text-white/55">Collector</span>
+                  </div>
+                  <h3 className="text-base font-bold italic mb-1">FEARS on Vinyl — $45</h3>
+                  <p className="text-xs text-white/55 leading-relaxed">
+                    The album pressed to 180g vinyl. Hand-numbered. First pressing only.
+                  </p>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -210,13 +311,13 @@ export default function HomePage() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-6">
             <span className="w-2 h-2 bg-[#f1c40f] rounded-full animate-pulse" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">New Release</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">Lead Single</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
             FEAR OF GOD
           </h2>
           <p className="text-sm text-white/60 mb-8 max-w-md mx-auto">
-            Lead single from the upcoming album <span className="text-[#f1c40f]">FEARS</span> — dropping September 9.
+            The lead single from <span className="text-[#f1c40f]">FEARS</span> — out now everywhere.
           </p>
         </div>
 
@@ -246,6 +347,92 @@ export default function HomePage() {
             <Zap className="w-4 h-4" />
             Get FEARS Early
           </Link>
+        </div>
+      </section>
+
+      {/* ── MERCH — Official Store ─────────────────────────────────────── */}
+      <section className="relative py-24 px-6 border-t border-white/10 overflow-hidden">
+        {/* Textured backdrop */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse 80% 60% at 70% 20%, rgba(241,196,15,0.07) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 20% 80%, rgba(241,196,15,0.05) 0%, transparent 65%)',
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="section-label">Official Store</p>
+              <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter">
+                MERCH
+              </h2>
+            </div>
+            <Link href="/merch/" className="btn-outline text-xs whitespace-nowrap">
+              Shop All Merch
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <p className="text-white/65 max-w-xl mb-10">
+            The FEARS first pressing — vinyl, apparel, and collectibles built to outlast the moment.
+            Limited runs. Hand-numbered. Once they&apos;re gone, they&apos;re gone.
+          </p>
+
+          {/* Featured 3-up: vinyl + record pack + hoodie */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { id: 'fears-vinyl', label: 'First Pressing' },
+              { id: 'fears-record-pack', label: 'One Owner Only' },
+              { id: 'fears-hoodie', label: 'Heavyweight' },
+            ].map(({ id, label }) => {
+              const p = getMerchProduct(id)
+              if (!p) return null
+              return (
+                <Link
+                  key={id}
+                  href="/merch/"
+                  className="group border border-white/10 hover:border-[#f1c40f]/40 transition-all bg-black flex flex-col"
+                >
+                  <div className="relative aspect-square bg-neutral-950 overflow-hidden flex items-center justify-center">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.08)_0%,_transparent_70%)]" />
+                    {p.category === 'vinyl' && <Disc3 className="relative w-28 h-28 text-[#f1c40f]/70 group-hover:scale-105 group-hover:rotate-12 transition-all duration-700" />}
+                    {p.category === 'digital' && <Zap className="relative w-24 h-24 text-[#f1c40f]/70 group-hover:scale-105 transition-transform" />}
+                    {p.category === 'apparel' && <ShoppingBag className="relative w-24 h-24 text-[#f1c40f]/70 group-hover:scale-105 transition-transform" />}
+                    <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-black tracking-[0.15em] uppercase bg-[#f1c40f] text-black">
+                      {label}
+                    </span>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col">
+                    <h3 className="text-lg font-bold italic tracking-tight">{p.name}</h3>
+                    <p className="text-xs text-white/55 leading-relaxed mt-1 mb-4 flex-1">{p.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-black text-[#f1c40f]">${p.price}</span>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-white/60 group-hover:text-[#f1c40f] transition-colors flex items-center gap-1">
+                        Shop now
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+
+          {/* Trust strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10">
+            {[
+              { icon: Truck, label: 'Free US shipping over $75' },
+              { icon: ShieldCheck, label: 'Secure Stripe checkout' },
+              { icon: RotateCcw, label: '30-day returns' },
+              { icon: Disc3, label: 'Hand-numbered first pressing' },
+            ].map(t => (
+              <div key={t.label} className="flex items-center gap-2.5 border border-white/10 px-4 py-3">
+                <t.icon className="w-4 h-4 text-[#f1c40f] flex-shrink-0" />
+                <span className="text-[11px] font-bold tracking-wider uppercase text-white/55">{t.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -363,14 +550,14 @@ export default function HomePage() {
         <div className="relative max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-6">
             <Zap className="w-3 h-3 text-[#f1c40f]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 9</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · Out Now</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
             GET A FREE BEAT.<br />
             <span className="text-[#f1c40f]">HEAR FEARS FIRST.</span>
           </h2>
           <p className="text-white/70 mb-10 max-w-md mx-auto">
-            Join the list. Get an exclusive beat download instantly. Plus early access to FEARS before it drops.
+            Join the list. Get an exclusive beat download instantly. Plus first word on vinyl drops, exclusive packs and everything after FEARS.
           </p>
           <SubscribeForm source="homepage" />
         </div>

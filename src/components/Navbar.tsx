@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, Zap, Lock } from 'lucide-react'
+import { Menu, X, Zap, Lock, ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
+import { useCart } from '@/components/CartContext'
 
 function FlowellLogo({ className = '' }: { className?: string }) {
   return (
@@ -16,7 +17,7 @@ function FlowellLogo({ className = '' }: { className?: string }) {
 }
 
 const navLinks = [
-  { href: '/beats/', label: 'Beats' },
+  { href: '/merch/', label: 'Merch', primary: true },
   { href: '/packs/', label: 'Packs' },
   { href: '/vault/', label: 'The Vault', premium: true },
   { href: '/music/', label: 'Music' },
@@ -26,6 +27,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { count, setOpen } = useCart()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
@@ -64,6 +66,20 @@ export default function Navbar() {
             <Zap className="w-3 h-3" />
             Shop Beats
           </Link>
+
+          {/* Cart icon with live count */}
+          <button
+            onClick={() => setOpen(true)}
+            className="relative flex items-center justify-center w-9 h-9 border border-white/10 hover:border-[#f1c40f] transition-colors ml-2"
+            aria-label="Open cart"
+          >
+            <ShoppingBag className="w-4 h-4 text-white/70 hover:text-[#f1c40f]" />
+            {count > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#f1c40f] text-black text-[10px] font-black flex items-center justify-center">
+                {count > 9 ? '9+' : count}
+              </span>
+            )}
+          </button>
         </div>
 
         <button
@@ -98,6 +114,13 @@ export default function Navbar() {
           >
             Free Beat
           </Link>
+          <button
+            onClick={() => { setMobileOpen(false); setOpen(true) }}
+            className="flex items-center gap-2 text-sm font-bold tracking-wider uppercase text-white/60 hover:text-[#f1c40f]"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            Cart {count > 0 && `(${count})`}
+          </button>
         </div>
       )}
     </nav>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Flowell Steps From Behind the Boards on "Fear of God" — Grammy Weekly',
     description:
-      'The DMV producer turned artist puts his own voice on the mic for the first time. Lead single from the debut album Fears, out September 9.',
+      'The DMV producer turned artist puts his own voice on the mic for the first time. Lead single from the debut album Fears, out September 16.',
     type: 'article',
   },
 }
@@ -76,7 +76,7 @@ export default function PressPage() {
 
           <p>
             The DMV based producer and recording artist releases &ldquo;Fear of God&rdquo; as the lead single from his
-            debut album <span className="text-[#f1c40f]">Fears</span>, out September 9. It is the first time Flowell
+            debut album <span className="text-[#f1c40f]">Fears</span>, out September 16. It is the first time Flowell
             steps out from behind the boards and puts his own voice front and center on a project built entirely around
             his own story.
           </p>
@@ -146,14 +146,14 @@ export default function PressPage() {
             What&rsquo;s Next for Flowell
           </h2>
           <p>
-            With Fears landing September 9, Fear of God is the marker that starts the countdown. Flowell has made it
+            With Fears landing September 16, Fear of God is the marker that starts the countdown. Flowell has made it
             clear that this album is not about easing into a new lane, it is about arriving in it fully formed. Expect
             the rollout to carry the same energy that has defined his catalog so far: layered, deliberate, and built
             for repeat plays.
           </p>
 
           <p className="text-lg text-white/80">
-            Stream &ldquo;Fear of God&rdquo; now and get familiar before Fears arrives in full on September 9.
+            Stream &ldquo;Fear of God&rdquo; now and get familiar before Fears arrives in full on September 16.
           </p>
         </div>
 
@@ -202,7 +202,7 @@ export default function PressPage() {
         </div>
 
         <p className="text-center text-xs text-white/55 mt-8">
-          <span className="text-[#f1c40f]">Fears</span> drops September 9, 2026.
+          <span className="text-[#f1c40f]">Fears</span> drops September 16, 2026.
         </p>
       </article>
     </div>

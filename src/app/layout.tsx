@@ -3,6 +3,9 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/components/CartContext";
+import { CartDrawer } from "@/components/CartDrawer";
+import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 
 export const metadata: Metadata = {
   title: "FLOWELL — Producer & Beatmaker",
@@ -45,9 +48,13 @@ export default function RootLayout({
       </head>
       <body className="bg-black text-white min-h-screen">
         <div className="grain-overlay" />
-        <Navbar />
-        <div className="pt-16">{children}</div>
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <div className="pt-16">{children}</div>
+          <Footer />
+          <CartDrawer />
+          <ExitIntentPopup />
+        </CartProvider>
       </body>
     </html>
   );

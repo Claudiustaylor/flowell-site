@@ -13,7 +13,7 @@ export default function SubscribePage() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f1c40f]/10 border border-[#f1c40f]/20 mb-8">
           <Zap className="w-3 h-3 text-[#f1c40f]" />
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · September 9</span>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">FEARS · Out Now</span>
         </div>
 
         {/* Headline */}
@@ -24,7 +24,7 @@ export default function SubscribePage() {
 
         {/* Subheadline */}
         <p className="text-lg text-white/70 mb-10 max-w-lg mx-auto leading-relaxed">
-          Join the list and get an exclusive beat download instantly. Plus early access to the FEARS album before it drops September 9.
+          Join the list and get an exclusive beat download instantly. Plus first word on vinyl drops, exclusive record packs and everything after FEARS.
         </p>
 
         {/* Value props */}
