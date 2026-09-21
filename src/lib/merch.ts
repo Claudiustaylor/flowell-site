@@ -35,7 +35,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     description:
       'The full stems, trackouts and session files for the entire FEARS album. One owner. When it is gone, it is gone.',
     details: [
-      'Complete trackouts for all 14 tracks',
+      'Complete trackouts for all 8 tracks',
       'WAV stems, 24-bit / 44.1kHz',
       'Full DAW session files',
       'Exclusive rights — transferred to one buyer',

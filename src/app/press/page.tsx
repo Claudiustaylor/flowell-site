@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Flowell Steps From Behind the Boards on "Fear of God" — Grammy Weekly',
     description:
-      'The DMV producer turned artist puts his own voice on the mic for the first time. Lead single from the debut album Fears, out September 16.',
+      'The DMV producer turned artist puts his own voice on the mic for the first time. Lead single from the debut album Fears, out now.',
     type: 'article',
   },
 }
@@ -75,8 +75,8 @@ export default function PressPage() {
           </p>
 
           <p>
-            The DMV based producer and recording artist releases &ldquo;Fear of God&rdquo; as the lead single from his
-            debut album <span className="text-[#f1c40f]">Fears</span>, out September 16. It is the first time Flowell
+            The DMV based producer and recording artist released &ldquo;Fear of God&rdquo; as the lead single from his
+            debut album <span className="text-[#f1c40f]">Fears</span>, out now everywhere. It is the first time Flowell
             steps out from behind the boards and puts his own voice front and center on a project built entirely around
             his own story.
           </p>
@@ -146,14 +146,14 @@ export default function PressPage() {
             What&rsquo;s Next for Flowell
           </h2>
           <p>
-            With Fears landing September 16, Fear of God is the marker that starts the countdown. Flowell has made it
+            With Fears out now, Fear of God was the marker that started the countdown. Flowell has made it
             clear that this album is not about easing into a new lane, it is about arriving in it fully formed. Expect
             the rollout to carry the same energy that has defined his catalog so far: layered, deliberate, and built
             for repeat plays.
           </p>
 
           <p className="text-lg text-white/80">
-            Stream &ldquo;Fear of God&rdquo; now and get familiar before Fears arrives in full on September 16.
+            Stream <span className="text-[#f1c40f]">Fears</span> now — start with &ldquo;Fear of God,&rdquo; then run the album front to back.
           </p>
         </div>
 
@@ -162,7 +162,7 @@ export default function PressPage() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/55 mb-4">Listen & Follow</p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              { label: 'Stream "Fear of God"', href: 'https://too.fm/fog' },
+              { label: 'Stream FEARS', href: 'https://ditto.fm/fears-flowell' },
               { label: 'YouTube — @FlowellBeats', href: 'https://www.youtube.com/@flowellbeats' },
               { label: 'Instagram — @iamflowell', href: 'https://www.instagram.com/iamflowell/' },
               { label: 'TikTok — @flowellhype', href: 'https://www.tiktok.com/@flowellhype' },
@@ -187,22 +187,22 @@ export default function PressPage() {
         {/* CTA */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://too.fm/fog"
+            href="https://ditto.fm/fears-flowell"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-sm"
           >
             <Play className="w-4 h-4" />
-            Stream Fear of God
+            Stream FEARS
           </a>
-          <Link href="/subscribe/" className="btn-outline text-sm">
+          <Link href="/merch/" className="btn-outline text-sm">
             <Zap className="w-4 h-4" />
-            Get FEARS Early
+            Shop the Merch
           </Link>
         </div>
 
         <p className="text-center text-xs text-white/55 mt-8">
-          <span className="text-[#f1c40f]">Fears</span> drops September 16, 2026.
+          <span className="text-[#f1c40f]">Fears</span> — the debut album. Out now.
         </p>
       </article>
     </div>

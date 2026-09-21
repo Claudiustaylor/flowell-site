@@ -39,7 +39,7 @@ export default function SubscribePage() {
             <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
               <Music className="w-5 h-5 text-[#f1c40f]" />
             </div>
-            <p className="text-xs text-white/60">Early FEARS<br />access</p>
+            <p className="text-xs text-white/60">FEARS<br />drops &amp; news</p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">

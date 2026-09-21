@@ -2,7 +2,7 @@ import { Music, ExternalLink } from "lucide-react";
 import { YoutubeIcon } from "@/components/BrandIcons";
 
 const tracks = [
-  { title: "Fears", plays: "Debut Album · 2026", image: "/images/fears-cover-600.jpg", spotifyUrl: "https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" },
+  { title: "Fears", plays: "Debut Album · 2026", image: "/images/fears-cover-600.jpg", spotifyUrl: "https://open.spotify.com/album/5S2cu1e2S1uH2Re9igSCu" },
   { title: "Feel It", plays: "Single · 2025", image: "/images/feel-it.jpg", spotifyUrl: "https://open.spotify.com/track/7G5pUOiUZ7UktQ8nobZ81o" },
   { title: "Flowell & Friends", plays: "Album · 2025", image: "/images/fashion-legend.jpg", spotifyUrl: "https://open.spotify.com/album/66k8qemvgz2HTMnYizBwUO" },
   { title: "For the Love of Teez", plays: "Beat Tape · 2025", image: "/images/briii.jpg", spotifyUrl: "https://open.spotify.com/album/1PzQPCz6H2Bq1Dl7bJdr4m" },
@@ -47,6 +47,40 @@ export default function MusicPage() {
             >
               <YoutubeIcon className="w-4 h-4" />
               Subscribe on YouTube
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FEARS — the debut album, playable on-site */}
+      <section className="mb-20">
+        <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+          <Music className="w-5 h-5 text-flowell-yellow" />
+          FEARS
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#f1c40f]">Out Now</span>
+        </h2>
+        <p className="text-sm text-white/70 mb-6">
+          The debut album — eight tracks, Shad, Carl B &amp; Lexy Priest. Play it right here.
+        </p>
+        <div className="max-w-3xl mx-auto">
+          <iframe
+            src="https://open.spotify.com/embed/album/5S2cu1e2S1uH2Re9igSCu?utm_source=generator&theme=0"
+            title="FEARS — Flowell on Spotify"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            className="w-full rounded-lg border border-white/10"
+          />
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <a
+              href="https://ditto.fm/fears-flowell"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Stream on Any Platform
             </a>
           </div>
         </div>

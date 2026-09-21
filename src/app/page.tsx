@@ -182,17 +182,31 @@ export default function HomePage() {
                 It was whether anyone would hear <span className="text-[#f1c40f] font-bold not-italic">ME</span>.
               </p>
               <p className="text-sm text-white/55 leading-relaxed mb-8 max-w-md">
-                Fourteen tracks. Shad, Carl B &amp; Lexy Priest. The producer steps from behind the boards.
+                Eight tracks. Shad, Carl B &amp; Lexy Priest. The producer steps from behind the boards.
               </p>
 
               {/* Stream buttons */}
-              <div className="flex flex-wrap items-center gap-3 mb-10">
-                <a href="https://open.spotify.com/artist/1Vswo3zB5kwT95O0mQVZH9" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <a href="https://ditto.fm/fears-flowell" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
                   Stream FEARS
                 </a>
                 <a href="https://www.youtube.com/watch?v=lZcG8dWsPCI" target="_blank" rel="noopener noreferrer" className="btn-outline text-sm">
                   Watch the Visualizer
                 </a>
+              </div>
+
+              {/* Spotify embed — on-site plays count as streams */}
+              <div className="mb-10">
+                <iframe
+                  src="https://open.spotify.com/embed/album/5S2cu1e2S1uH2Re9igSCu?utm_source=generator&theme=0"
+                  title="FEARS — Flowell on Spotify"
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  className="w-full border border-white/10"
+                />
               </div>
 
               {/* Physical + exclusive offers */}
@@ -344,8 +358,8 @@ export default function HomePage() {
             Stream Everywhere
           </a>
           <Link href="/subscribe/" className="btn-outline text-sm">
-            <Zap className="w-4 h-4" />
-            Get FEARS Early
+          <Zap className="w-4 h-4" />
+          Get the Free Beat
           </Link>
         </div>
       </section>
