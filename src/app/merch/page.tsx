@@ -85,7 +85,7 @@ export default function MerchPage() {
             {/* Image area */}
             <div className="relative aspect-square bg-neutral-950 overflow-hidden flex items-center justify-center">
               {p.image ? (
-                <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.05)_0%,_transparent_70%)]">
                   {p.category === 'vinyl' && <Disc3 className="w-16 h-16 text-[#f1c40f]/60" />}
@@ -167,7 +167,7 @@ export default function MerchPage() {
               {/* Visual */}
               <div className="md:w-1/2 aspect-square bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.06)_0%,_transparent_70%)] flex items-center justify-center">
                 {p.image ? (
-                  <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                  <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
                 ) : (
                   <div className="text-center">
                     {p.category === 'vinyl' && <Disc3 className="w-24 h-24 mx-auto mb-3 text-[#f1c40f]/60" />}
