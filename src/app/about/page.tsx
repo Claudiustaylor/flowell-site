@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { Zap, Music, Globe, Headphones } from 'lucide-react'
 
 const stats = [
-  { number: 'Beats', label: 'Produced' },
-  { number: 'Songs', label: 'Released' },
+  { number: '400+', label: 'Beats Produced' },
+  { number: '300+', label: 'Songs Released' },
   { number: '6', label: 'Genres' },
   { number: '∞', label: 'Vibes' },
 ]
@@ -36,7 +36,7 @@ export default function AboutPage() {
 
           <div className="aspect-[4/5] bg-neutral-950 border border-white/10 overflow-hidden relative">
             <img
-              src="/images/flowell-spotify-profile-640.jpg"
+              src="/images/flowell-spotify-profile-1280.jpg"
               alt="Flowell"
               className="w-full h-full object-cover"
             />

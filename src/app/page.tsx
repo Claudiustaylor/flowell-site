@@ -198,7 +198,7 @@ export default function HomePage() {
               {/* Spotify embed — on-site plays count as streams */}
               <div className="mb-10">
                 <iframe
-                  src="https://open.spotify.com/embed/album/5S2cu1e2S1uH2Re9igSCu?utm_source=generator&theme=0"
+                  src="https://open.spotify.com/embed/album/5M2cu1e2S1uH2Re9igSYCu?utm_source=generator&theme=0"
                   title="FEARS — Flowell on Spotify"
                   width="100%"
                   height="352"

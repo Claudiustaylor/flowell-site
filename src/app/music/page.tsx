@@ -2,7 +2,7 @@ import { Music, ExternalLink } from "lucide-react";
 import { YoutubeIcon } from "@/components/BrandIcons";
 
 const tracks = [
-  { title: "Fears", plays: "Debut Album · 2026", image: "/images/fears-cover-600.jpg", spotifyUrl: "https://open.spotify.com/album/5S2cu1e2S1uH2Re9igSCu" },
+  { title: "Fears", plays: "Debut Album · 2026", image: "/images/fears-cover-600.jpg", spotifyUrl: "https://open.spotify.com/album/5M2cu1e2S1uH2Re9igSYCu" },
   { title: "Feel It", plays: "Single · 2025", image: "/images/feel-it.jpg", spotifyUrl: "https://open.spotify.com/track/7G5pUOiUZ7UktQ8nobZ81o" },
   { title: "Flowell & Friends", plays: "Album · 2025", image: "/images/fashion-legend.jpg", spotifyUrl: "https://open.spotify.com/album/66k8qemvgz2HTMnYizBwUO" },
   { title: "For the Love of Teez", plays: "Beat Tape · 2025", image: "/images/briii.jpg", spotifyUrl: "https://open.spotify.com/album/1PzQPCz6H2Bq1Dl7bJdr4m" },
@@ -64,7 +64,7 @@ export default function MusicPage() {
         </p>
         <div className="max-w-3xl mx-auto">
           <iframe
-            src="https://open.spotify.com/embed/album/5S2cu1e2S1uH2Re9igSCu?utm_source=generator&theme=0"
+            src="https://open.spotify.com/embed/album/5M2cu1e2S1uH2Re9igSYCu?utm_source=generator&theme=0"
             title="FEARS — Flowell on Spotify"
             width="100%"
             height="352"
