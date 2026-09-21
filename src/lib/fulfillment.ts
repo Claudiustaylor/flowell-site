@@ -39,55 +39,55 @@ export const PRINT_FILES = {
  * picked to the variant ID for that size + color.
  */
 type PrintfulMap = {
-  catalogProductIds: number[] // Printful catalog product families
+  catalogProductId: number // Printful catalog product family (for reference/refresh)
   fileKey: keyof typeof PRINT_FILES
-  color: string // Printful color name
+  color: string // Printful color name actually ordered
   sizes: Record<string, number> // merch size → catalog_variant_id
   note?: string
 }
 
 export const PRINTFUL_MAP: Record<string, PrintfulMap> = {
   'fears-hoodie': {
-    catalogProductIds: [294],
+    catalogProductId: 294,
     fileKey: 'classic',
     color: 'Black',
-    sizes: { S: 9218, M: 9219, L: 9220, XL: 9221, '2XL': 9222, '3XL': 9223 },
-    note: 'Bella+Canvas 3719 heavyweight pullover hoodie',
+    sizes: { S: 9227, M: 9228, L: 9229, XL: 9230, '2XL': 9231 },
+    note: 'Bella+Canvas 3719 pullover hoodie',
   },
   'fears-tee': {
-    catalogProductIds: [71],
+    catalogProductId: 71,
     fileKey: 'classic',
     color: 'Black',
-    sizes: { S: 9575, M: 9576, L: 9577, XL: 9578, '2XL': 9579 },
-    note: 'Bella+Canvas 3001 tee',
+    sizes: { S: 4016, M: 4017, L: 4018, XL: 4019, '2XL': 4020, '3XL': 5295 },
+    note: 'Bella+Canvas 3001 staple tee',
   },
   'fears-noir-hoodie': {
-    catalogProductIds: [294],
+    catalogProductId: 892,
     fileKey: 'noir',
     color: 'Black',
-    sizes: { S: 9218, M: 9219, L: 9220, XL: 9221, '2XL': 9222, '3XL': 9223 },
-    note: 'Bella+Canvas 3719 — cream FEARS print on washed black',
+    sizes: { S: 22958, M: 22960, L: 22962, XL: 22964, '2XL': 22966, '3XL': 22968 },
+    note: 'Bella+Canvas 4719 oversized heavyweight hoodie — cream FEARS print on black',
   },
   'fears-noir-tee': {
-    catalogProductIds: [71],
+    catalogProductId: 1592,
     fileKey: 'noir',
     color: 'Black',
-    sizes: { S: 9575, M: 9576, L: 9577, XL: 9578, '2XL': 9579 },
-    note: 'Bella+Canvas 3001 — cream FEARS print on faded black',
+    sizes: { S: 50106, M: 50086, L: 50117, XL: 50107, '2XL': 50079, '3XL': 50132 },
+    note: 'Bella+Canvas 3010 oversized boxy tee — cream FEARS print on black',
   },
   'fears-ivory-crop': {
-    catalogProductIds: [294],
+    catalogProductId: 317,
     fileKey: 'ivory',
-    color: 'White',
-    sizes: { S: 9210, M: 9211, L: 9212, XL: 9213, '2XL': 9214 },
-    note: 'Bella+Canvas 3719 white — black arched FEARS print (cropped styling is cut/sew, POD closest match)',
+    color: 'Storm',
+    sizes: { S: 9648, M: 9649, L: 9650, XL: 9651, '2XL': 9652 },
+    note: "Bella+Canvas 7502 women's cropped hoodie, Storm (light gray — no bone colorway in catalog)",
   },
   'fears-ivory-tee': {
-    catalogProductIds: [71],
+    catalogProductId: 862,
     fileKey: 'ivory',
-    color: 'White',
-    sizes: { S: 9570, M: 9571, L: 9572, XL: 9573, '2XL': 9574 },
-    note: 'Bella+Canvas 3001 white — black arched FEARS (fitted styling)',
+    color: 'Ivory',
+    sizes: { S: 22585, M: 22590, L: 22595, XL: 22600, '2XL': 22605 },
+    note: "Comfort Colors 3023CL women's heavyweight boxy tee, Ivory — black arched FEARS",
   },
 }
 
