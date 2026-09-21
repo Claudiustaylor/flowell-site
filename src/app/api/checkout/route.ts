@@ -96,6 +96,14 @@ export async function POST(req: Request) {
     idx++
   }
 
+  // Mirror the cart into session metadata so the webhook can reconstruct
+  // line items without a Stripe API call (payment mode sessions don't expand
+  // line items in the event payload by default).
+  params.set('metadata[cart_lines]', JSON.stringify(
+    lines.map((l) => ({ productId: l.product!.id, qty: l.qty, size: l.size ?? null }))
+  ))
+  params.set('metadata[order_source]', 'iamflowell-merch')
+
   try {
     const res = await fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'POST',
