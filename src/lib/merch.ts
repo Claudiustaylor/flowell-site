@@ -18,6 +18,7 @@ export type MerchProduct = {
   description: string
   details: string[]
   image?: string
+  imageBack?: string
   stock?: number
   badge?: 'new' | 'limited' | 'bestseller' | 'collector'
   crossSellIds?: string[]
@@ -89,6 +90,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     crossSellIds: ['fears-tee', 'fears-vinyl'],
     upsellIds: ['fears-vault-bundle'],
     image: '/images/merch/fears-hoodie.jpg',
+    imageBack: '/images/merch/fears-hoodie-back.jpg',
   },
   {
     id: 'fears-tee',
@@ -109,6 +111,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     crossSellIds: ['fears-hoodie', 'fears-vinyl'],
     upsellIds: ['fears-hoodie'],
     image: '/images/merch/fears-tee.jpg',
+    imageBack: '/images/merch/fears-tee-back.jpg',
   },
 
   // ── High-fashion capsule: FEARS Noir (washed black, tonal) ─────────
@@ -132,6 +135,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     crossSellIds: ['fears-noir-tee', 'fears-ivory-crop'],
     upsellIds: ['fears-hoodie', 'fears-vault-bundle'],
     image: '/images/merch/fears-noir-hoodie.jpg',
+    imageBack: '/images/merch/fears-noir-hoodie-back.jpg',
   },
   {
     id: 'fears-noir-tee',
@@ -153,6 +157,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     crossSellIds: ['fears-noir-hoodie', 'fears-ivory-tee'],
     upsellIds: ['fears-tee', 'fears-hoodie'],
     image: '/images/merch/fears-noir-tee.jpg',
+    imageBack: '/images/merch/fears-noir-tee-back.jpg',
   },
 
   // ── High-fashion capsule: FEARS Ivory (women's, bone) ──────────────
@@ -176,6 +181,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     crossSellIds: ['fears-ivory-tee', 'fears-noir-hoodie'],
     upsellIds: ['fears-ivory-tee', 'fears-vault-bundle'],
     image: '/images/merch/fears-ivory-crop.jpg',
+    imageBack: '/images/merch/fears-ivory-crop-back.jpg',
   },
   {
     id: 'fears-ivory-tee',
@@ -197,6 +203,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     crossSellIds: ['fears-ivory-crop', 'fears-noir-tee'],
     upsellIds: ['fears-ivory-crop', 'fears-tee'],
     image: '/images/merch/fears-ivory-tee.jpg',
+    imageBack: '/images/merch/fears-ivory-tee-back.jpg',
   },
 
   // ── Collectibles ────────────────────────────────────────────────────

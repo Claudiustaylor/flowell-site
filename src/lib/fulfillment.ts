@@ -163,12 +163,14 @@ export async function sendToPrintful(orderBody: unknown): Promise<
     return { ok: false, error: 'PRINTFUL_API_KEY not set — order needs manual fulfillment' }
   }
   try {
+    const headers: Record<string, string> = {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    }
+    if (process.env.PRINTFUL_STORE_ID) headers['X-PF-Store-Id'] = process.env.PRINTFUL_STORE_ID
     const res = await fetch(`${PRINTFUL_API}/orders`, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify(orderBody),
       signal: AbortSignal.timeout(20000),
     })

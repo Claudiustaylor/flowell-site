@@ -9,6 +9,7 @@ export default function MerchPage() {
   const { add, count, setOpen } = useCart()
   const [category, setCategory] = useState('all')
   const [quickView, setQuickView] = useState<string | null>(null)
+  const [quickViewBack, setQuickViewBack] = useState(false)
   const [size, setSize] = useState<string>('M')
   const [success] = useState(() =>
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('checkout') === 'success'
@@ -85,7 +86,20 @@ export default function MerchPage() {
             {/* Image area */}
             <div className="relative aspect-square bg-neutral-950 overflow-hidden flex items-center justify-center">
               {p.image ? (
-                <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
+                <>
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
+                  />
+                  {p.imageBack && (
+                    <img
+                      src={p.imageBack}
+                      alt={`${p.name} — back`}
+                      className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  )}
+                </>
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.05)_0%,_transparent_70%)]">
                   {p.category === 'vinyl' && <Disc3 className="w-16 h-16 text-[#f1c40f]/60" />}
@@ -103,7 +117,7 @@ export default function MerchPage() {
               )}
               {/* Quick view button */}
               <button
-                onClick={() => setQuickView(p.id)}
+                onClick={() => { setQuickViewBack(false); setQuickView(p.id) }}
                 className="absolute bottom-3 right-3 px-3 py-1.5 text-[10px] font-bold tracking-wider uppercase bg-black/80 border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:border-[#f1c40f] hover:text-[#f1c40f]"
               >
                 Quick View
@@ -167,7 +181,21 @@ export default function MerchPage() {
               {/* Visual */}
               <div className="md:w-1/2 aspect-square bg-[radial-gradient(ellipse_at_center,_rgba(241,196,15,0.06)_0%,_transparent_70%)] flex items-center justify-center">
                 {p.image ? (
-                  <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
+                  <>
+                  <img src={p.imageBack && quickViewBack ? p.imageBack : p.image} alt={p.name} className="w-full h-full object-contain" />
+                  {p.imageBack && (
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 bg-black/80 border border-white/20 px-1 py-1 z-10">
+                      <button
+                        onClick={() => setQuickViewBack(false)}
+                        className={`px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase ${!quickViewBack ? 'text-[#f1c40f]' : 'text-white/55 hover:text-white'}`}
+                      >Front</button>
+                      <button
+                        onClick={() => setQuickViewBack(true)}
+                        className={`px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase ${quickViewBack ? 'text-[#f1c40f]' : 'text-white/55 hover:text-white'}`}
+                      >Back</button>
+                    </div>
+                  )}
+                  </>
                 ) : (
                   <div className="text-center">
                     {p.category === 'vinyl' && <Disc3 className="w-24 h-24 mx-auto mb-3 text-[#f1c40f]/60" />}
