@@ -187,10 +187,10 @@ export default function HomePage() {
 
               {/* Stream buttons */}
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <a href="https://ditto.fm/fears-flowell" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
+                <a href="https://ditto.fm/fears-flowell" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm min-w-[240px] justify-center">
                   Stream FEARS
                 </a>
-                <a href="https://www.youtube.com/watch?v=lZcG8dWsPCI" target="_blank" rel="noopener noreferrer" className="btn-outline text-sm">
+                <a href="https://www.youtube.com/watch?v=lZcG8dWsPCI" target="_blank" rel="noopener noreferrer" className="btn-outline text-sm min-w-[240px] justify-center">
                   Watch the Visualizer
                 </a>
               </div>

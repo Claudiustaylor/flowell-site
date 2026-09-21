@@ -3,7 +3,7 @@ import { Zap, Music, Globe, Headphones } from 'lucide-react'
 
 const stats = [
   { number: '400+', label: 'Beats Produced' },
-  { number: '300+', label: 'Songs Released' },
+  { number: '40+', label: 'Songs Released' },
   { number: '6', label: 'Genres' },
   { number: '∞', label: 'Vibes' },
 ]
