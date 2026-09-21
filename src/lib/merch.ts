@@ -44,6 +44,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'limited',
     crossSellIds: ['fears-vinyl', 'fears-hoodie'],
     upsellIds: ['fears-vault-bundle'],
+    image: '/images/merch/fears-record-pack.jpg',
   },
 
   // ── Vinyl ───────────────────────────────────────────────────────────
@@ -65,6 +66,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'limited',
     crossSellIds: ['fears-hoodie', 'fears-record-pack'],
     upsellIds: ['fears-vault-bundle'],
+    image: '/images/merch/fears-vinyl.jpg',
   },
 
   // ── Apparel ─────────────────────────────────────────────────────────
@@ -86,6 +88,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'new',
     crossSellIds: ['fears-tee', 'fears-vinyl'],
     upsellIds: ['fears-vault-bundle'],
+    image: '/images/merch/fears-hoodie.jpg',
   },
   {
     id: 'fears-tee',
@@ -105,6 +108,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'bestseller',
     crossSellIds: ['fears-hoodie', 'fears-vinyl'],
     upsellIds: ['fears-hoodie'],
+    image: '/images/merch/fears-tee.jpg',
   },
 
   // ── Collectibles ────────────────────────────────────────────────────
@@ -126,6 +130,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'collector',
     crossSellIds: ['fears-vinyl', 'fears-tee'],
     upsellIds: ['fears-vault-bundle'],
+    image: '/images/merch/fears-poster.jpg',
   },
   {
     id: 'fears-cassette',
@@ -144,6 +149,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'collector',
     crossSellIds: ['fears-poster', 'fears-vinyl'],
     upsellIds: ['fears-vault-bundle'],
+    image: '/images/merch/fears-cassette.jpg',
   },
 
   // ── Bundles (up-sell targets) ───────────────────────────────────────
@@ -166,6 +172,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     badge: 'bestseller',
     crossSellIds: ['fears-tee', 'fears-poster'],
     upsellIds: ['fears-record-pack'],
+    image: '/images/merch/fears-vault-bundle.jpg',
   },
 ]
 
