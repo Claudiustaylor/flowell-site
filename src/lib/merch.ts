@@ -111,6 +111,94 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     image: '/images/merch/fears-tee.jpg',
   },
 
+  // ── High-fashion capsule: FEARS Noir (washed black, tonal) ─────────
+  {
+    id: 'fears-noir-hoodie',
+    name: 'FEARS Noir Hoodie',
+    category: 'apparel',
+    price: 85,
+    compareAt: 110,
+    description:
+      'Oversized washed-black heavyweight hoodie from the FEARS Noir capsule. Tonal gothic FEARS across the chest, gold bolt at the hem — high-fashion streetwear cut.',
+    details: [
+      '14oz heavyweight cotton, vintage wash',
+      'Oversized boxy fit, drop shoulders',
+      'Tonal gothic FEARS chest embroidery',
+      'Gold bolt hit at the hem',
+      'Unisex — true to size for oversized drape',
+    ],
+    stock: 80,
+    badge: 'new',
+    crossSellIds: ['fears-noir-tee', 'fears-ivory-crop'],
+    upsellIds: ['fears-hoodie', 'fears-vault-bundle'],
+    image: '/images/merch/fears-noir-hoodie.jpg',
+  },
+  {
+    id: 'fears-noir-tee',
+    name: 'FEARS Noir Tee',
+    category: 'apparel',
+    price: 55,
+    compareAt: 70,
+    description:
+      'Vintage-wash black boxy tee from the FEARS Noir capsule. Tonal gothic FEARS on the front, gold bolt on the back neck.',
+    details: [
+      'Heavyweight garment-dye cotton',
+      'Boxy oversized fit, straight hem',
+      'Tonal gothic FEARS front hit',
+      'Gold bolt back-neck print',
+      'Unisex',
+    ],
+    stock: 120,
+    badge: 'new',
+    crossSellIds: ['fears-noir-hoodie', 'fears-ivory-tee'],
+    upsellIds: ['fears-tee', 'fears-hoodie'],
+    image: '/images/merch/fears-noir-tee.jpg',
+  },
+
+  // ── High-fashion capsule: FEARS Ivory (women's, bone) ──────────────
+  {
+    id: 'fears-ivory-crop',
+    name: 'FEARS Ivory Cropped Hoodie',
+    category: 'apparel',
+    price: 75,
+    compareAt: 95,
+    description:
+      'Bone-cream cropped hoodie from the FEARS Ivory capsule. Gothic FEARS arched over the chest in black, gold bolt at the hem — soft, boxy, cropped right.',
+    details: [
+      'Soft brushed cotton fleece',
+      'Cropped boxy fit, wide ribbed trims',
+      'Gothic FEARS arched chest print',
+      'Gold bolt hit at the hem',
+      "Women's fit",
+    ],
+    stock: 90,
+    badge: 'new',
+    crossSellIds: ['fears-ivory-tee', 'fears-noir-hoodie'],
+    upsellIds: ['fears-ivory-tee', 'fears-vault-bundle'],
+    image: '/images/merch/fears-ivory-crop.jpg',
+  },
+  {
+    id: 'fears-ivory-tee',
+    name: 'FEARS Ivory Tee',
+    category: 'apparel',
+    price: 45,
+    compareAt: 60,
+    description:
+      'Bone-cream fitted tee from the FEARS Ivory capsule. Gothic FEARS arched across the chest, gold bolt at the hem. Soft everyday drape.',
+    details: [
+      'Soft combed cotton jersey',
+      'Feminine slim drape',
+      'Gothic FEARS arched chest print',
+      'Gold bolt hem hit',
+      "Women's fit",
+    ],
+    stock: 140,
+    badge: 'new',
+    crossSellIds: ['fears-ivory-crop', 'fears-noir-tee'],
+    upsellIds: ['fears-ivory-crop', 'fears-tee'],
+    image: '/images/merch/fears-ivory-tee.jpg',
+  },
+
   // ── Collectibles ────────────────────────────────────────────────────
   {
     id: 'fears-poster',
