@@ -78,10 +78,10 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     price: 55,
     compareAt: 70,
     description:
-      'Heavyweight 12oz black cotton hoodie. FEARS front chest print, gold lightning bolt on sleeve.',
+      'Heavyweight black cotton hoodie. FEARS front chest print, gold lightning bolt on sleeve.',
     details: [
-      '12oz heavyweight cotton',
-      'Screen-printed front chest logo',
+      '12oz-feel heavyweight fleece blend',
+      'Printed front chest logo',
       'Gold lightning bolt sleeve hit',
       'Unisex fit — size up for oversized look',
     ],
@@ -101,7 +101,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     description:
       'Heavyweight black cotton tee. FEARS italic wordmark on front, the narrative line across the shoulders.',
     details: [
-      '6oz heavyweight cotton',
+      '6oz-feel heavyweight jersey',
       'FEARS wordmark front print',
       'The narrative line across the back',
       'Unisex fit',
@@ -124,9 +124,9 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     description:
       'Oversized washed-black heavyweight hoodie from the FEARS Noir capsule. Tonal gothic FEARS across the chest, gold bolt at the hem — high-fashion streetwear cut.',
     details: [
-      '14oz heavyweight cotton, vintage wash',
+      'Heavyweight cotton blend, vintage wash',
       'Oversized boxy fit, drop shoulders',
-      'Tonal gothic FEARS chest embroidery',
+      'Tonal gothic FEARS chest print',
       'Gold bolt hit at the hem',
       'Unisex — true to size for oversized drape',
     ],
@@ -146,7 +146,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     description:
       'Vintage-wash black boxy tee from the FEARS Noir capsule. Tonal gothic FEARS on the front, gold bolt on the back neck.',
     details: [
-      'Heavyweight garment-dye cotton',
+      'Heavyweight premium cotton',
       'Boxy oversized fit, straight hem',
       'Tonal gothic FEARS front hit',
       'Gold bolt back-neck print',
@@ -170,7 +170,7 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     description:
       'Bone-cream cropped hoodie from the FEARS Ivory capsule. Gothic FEARS arched over the chest in black, gold bolt at the hem — soft, boxy, cropped right.',
     details: [
-      'Soft brushed cotton fleece',
+      'Soft brushed cotton blend fleece',
       'Cropped boxy fit, wide ribbed trims',
       'Gothic FEARS arched chest print',
       'Gold bolt hit at the hem',
