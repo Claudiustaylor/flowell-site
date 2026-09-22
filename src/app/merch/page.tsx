@@ -1,9 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ShoppingBag, Zap, Disc3, ArrowRight, Plus, Truck, ShieldCheck, RotateCcw, Sparkles } from 'lucide-react'
 import { useCart } from '@/components/CartContext'
-import { MERCH_PRODUCTS, MERCH_CATEGORIES, getMerchProduct } from '@/lib/merch'
+import { MERCH_PRODUCTS, MERCH_CATEGORIES, getMerchProduct, type MerchProduct } from '@/lib/merch'
+
+/** Live overrides from the Printful store (dashboard edits propagate here). */
+type LiveOverride = { id: string; name: string; price: number; outOfStockSizes: string[] }
 
 export default function MerchPage() {
   const { add, count, setOpen } = useCart()
@@ -11,9 +14,36 @@ export default function MerchPage() {
   const [quickView, setQuickView] = useState<string | null>(null)
   const [quickViewBack, setQuickViewBack] = useState(false)
   const [size, setSize] = useState<string>('M')
+  const [live, setLive] = useState<Map<string, LiveOverride>>(new Map())
   const [success] = useState(() =>
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('checkout') === 'success'
   )
+
+  // Pull Printful-backed price/name/stock overrides (site design stays merch.ts-owned)
+  useEffect(() => {
+    fetch('/api/merch/live')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d?.products) return
+        const m = new Map<string, LiveOverride>()
+        for (const p of d.products) {
+          m.set(p.id, { id: p.id, name: p.name, price: p.price, outOfStockSizes: p.outOfStockSizes ?? [] })
+        }
+        setLive(m)
+      })
+      .catch(() => {})
+  }, [])
+
+  /** merch.ts product with live Printful overrides applied. */
+  const withLive = (p: MerchProduct): MerchProduct => {
+    const o = live.get(p.id)
+    if (!o) return p
+    return {
+      ...p,
+      name: o.name || p.name,
+      price: o.price > 0 ? o.price : p.price,
+    }
+  }
 
   const filtered =
     category === 'all' ? MERCH_PRODUCTS : MERCH_PRODUCTS.filter(p => p.category === category)
@@ -81,7 +111,9 @@ export default function MerchPage() {
 
       {/* ── Product grid ────────────────────────────────────────────── */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map(p => (
+        {filtered.map(raw => {
+          const p = withLive(raw)
+          return (
           <div key={p.id} className="group border border-white/10 hover:border-[#f1c40f]/40 transition-all bg-black flex flex-col">
             {/* Image area */}
             <div className="relative aspect-square bg-neutral-950 overflow-hidden flex items-center justify-center">
@@ -166,13 +198,15 @@ export default function MerchPage() {
               </button>
             </div>
           </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* ── Quick view modal ───────────────────────────────────────── */}
       {quickView && (() => {
-        const p = getMerchProduct(quickView)
-        if (!p) return null
+        const base = getMerchProduct(quickView)
+        if (!base) return null
+        const p = withLive(base)
         const crossSells = (p.crossSellIds ?? []).map(getMerchProduct).filter(Boolean)
         return (
           <div className="fixed inset-0 z-[95] flex items-center justify-center px-4">
