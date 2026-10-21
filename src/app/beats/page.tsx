@@ -321,6 +321,15 @@ export default function BeatsPage() {
             <ExternalLink className="w-4 h-4" />
             Explore Full Catalog
           </a>
+          <a
+            href="https://www.getmusic.shop/u/flowell"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline inline-flex mt-3"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Stream on GetMusic
+          </a>
         </div>
       </div>
 
