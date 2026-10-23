@@ -18,6 +18,8 @@ export type Beat = {
   cover_url: string | null
   audio_url: string | null
   created_at: string
+
+  youtube_url?: string
 }
 
 export type Pack = {
