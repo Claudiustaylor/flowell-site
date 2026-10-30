@@ -19,12 +19,12 @@
 const PRINTFUL_API = 'https://api.printful.com/v2'
 
 // ─── Print files (hosted on this site, HTTPS, stable URLs) ────────────
-// Noir capsule: warm-cream ink for washed-black garments.
+// Noir capsule: tonal charcoal ink for washed-black garments.
 // Ivory capsule: matte-black ink for bone garments.
 export const PRINT_FILES = {
-  noir: '/images/merch/print-files/fears-noir-print.png',
-  ivory: '/images/merch/print-files/fears-ivory-print.png',
-  classic: '/images/merch/print-files/fears-classic-print.png',
+  noir: '/images/merch/print-files/fears-noir-tonal-print-v3.png',
+  ivory: '/images/merch/print-files/fears-ivory-print-v2.png',
+  classic: '/images/merch/print-files/fears-classic-print-v2.png',
 } as const
 
 /**
@@ -43,6 +43,7 @@ type PrintfulMap = {
   fileKey: keyof typeof PRINT_FILES
   color: string // Printful color name actually ordered
   sizes: Record<string, number> // merch size → catalog_variant_id
+  extraPlacements?: { placement: 'back' | 'sleeve_left'; file: string }[] // printed in addition to the front
   note?: string
 }
 
@@ -52,6 +53,7 @@ export const PRINTFUL_MAP: Record<string, PrintfulMap> = {
     fileKey: 'classic',
     color: 'Black',
     sizes: { S: 9227, M: 9228, L: 9229, XL: 9230, '2XL': 9231 },
+    extraPlacements: [{ placement: 'sleeve_left', file: '/images/merch/print-files/fears-classic-sleeve-bolt-v2.png' }],
     note: 'Bella+Canvas 3719 pullover hoodie',
   },
   'fears-tee': {
@@ -59,35 +61,40 @@ export const PRINTFUL_MAP: Record<string, PrintfulMap> = {
     fileKey: 'classic',
     color: 'Black',
     sizes: { S: 4016, M: 4017, L: 4018, XL: 4019, '2XL': 4020, '3XL': 5295 },
+    extraPlacements: [{ placement: 'back', file: '/images/merch/print-files/fears-classic-back-tracklist-v2.png' }],
     note: 'Bella+Canvas 3001 staple tee',
   },
   'fears-noir-hoodie': {
     catalogProductId: 892,
     fileKey: 'noir',
-    color: 'Black',
-    sizes: { S: 22958, M: 22960, L: 22962, XL: 22964, '2XL': 22966, '3XL': 22968 },
-    note: 'Bella+Canvas 4719 oversized heavyweight hoodie — cream FEARS print on black',
+    color: 'Vintage Black',
+    sizes: { S: 22993, M: 22994, L: 22995, XL: 22996, '2XL': 22997, '3XL': 22998 },
+    extraPlacements: [{ placement: 'back', file: '/images/merch/print-files/fears-noir-hoodie-back-bolt-v2.png' }],
+    note: 'Bella+Canvas 4719 oversized heavyweight hoodie, Vintage Black — tonal FEARS print',
   },
   'fears-noir-tee': {
-    catalogProductId: 1592,
+    catalogProductId: 713,
     fileKey: 'noir',
-    color: 'Black',
-    sizes: { S: 50106, M: 50086, L: 50117, XL: 50107, '2XL': 50079, '3XL': 50132 },
-    note: 'Bella+Canvas 3010 oversized boxy tee — cream FEARS print on black',
+    color: 'Faded Black',
+    sizes: { S: 17569, M: 17574, L: 17579, XL: 17584, '2XL': 17589, '3XL': 17594 },
+    extraPlacements: [{ placement: 'back', file: '/images/merch/print-files/fears-noir-tee-back-bolt-v3.png' }],
+    note: 'AS Colour 5082 oversized faded tee, Faded Black — tonal FEARS print',
   },
   'fears-ivory-crop': {
     catalogProductId: 317,
     fileKey: 'ivory',
     color: 'Storm',
     sizes: { S: 9648, M: 9649, L: 9650, XL: 9651, '2XL': 9652 },
+    extraPlacements: [{ placement: 'back', file: '/images/merch/print-files/fears-ivory-crop-back-bolt-v2.png' }],
     note: "Bella+Canvas 7502 women's cropped hoodie, Storm (light gray — no bone colorway in catalog)",
   },
   'fears-ivory-tee': {
-    catalogProductId: 862,
+    catalogProductId: 360,
     fileKey: 'ivory',
-    color: 'Ivory',
-    sizes: { S: 22585, M: 22590, L: 22595, XL: 22600, '2XL': 22605 },
-    note: "Comfort Colors 3023CL women's heavyweight boxy tee, Ivory — black arched FEARS",
+    color: 'Natural',
+    sizes: { S: 46501, M: 46502, L: 46503, XL: 46504, '2XL': 46505 },
+    extraPlacements: [{ placement: 'back', file: '/images/merch/print-files/fears-ivory-back-bolt-v2.png' }],
+    note: "Bella+Canvas 6400 women's relaxed tee, Natural — black arched FEARS",
   },
 }
 
@@ -140,6 +147,11 @@ export function buildPrintfulOrder(opts: {
           technique: 'dtg',
           layers: [{ type: 'file', url: fileUrl }],
         },
+        ...(map.extraPlacements ?? []).map((extra) => ({
+          placement: extra.placement,
+          technique: 'dtg',
+          layers: [{ type: 'file', url: `${opts.origin}${extra.file}` }],
+        })),
       ],
     })
   }

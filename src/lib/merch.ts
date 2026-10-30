@@ -190,10 +190,10 @@ export const MERCH_PRODUCTS: MerchProduct[] = [
     price: 45,
     compareAt: 60,
     description:
-      'Bone-cream fitted tee from the FEARS Ivory capsule. Gothic FEARS arched across the chest, gold bolt at the hem. Soft everyday drape.',
+      'Bone-cream relaxed tee from the FEARS Ivory capsule. Gothic FEARS arched across the chest, gold bolt at the hem. Soft everyday drape.',
     details: [
       'Soft combed cotton jersey',
-      'Feminine slim drape',
+      'Relaxed drape',
       'Gothic FEARS arched chest print',
       'Gold bolt hem hit',
       "Women's fit",
